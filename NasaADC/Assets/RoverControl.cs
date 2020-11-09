@@ -49,34 +49,38 @@ public class RoverControl : MonoBehaviour {
     // Start is called before the first frame update
     
     private void Awake() {
+
         controls = new DefaultControl();
         controls.Player.Throttle.performed += throt => thrustPower = (throt.ReadValue<float>());
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
     }
 
     private void OnEnable() {
+
         controls.Enable();
     }
 
     private void OnDisable() {
+
         controls.Disable();
     }
 
     private void Start() {
+
         wheelModelOffset = wheels[0].model.transform.position - wheels[0].collider.transform.position;
     }
 
     // Update is called once per frame
-    private void Update() {
-    }
 
     private void FixedUpdate() {
+
         Move();
         Turn();
         AnimateWheels();
     }
 
     private void Move() {
+
         if (thrustPower !=0f) {
             // Power all wheels
             foreach (var wheel in wheels) {
@@ -100,10 +104,11 @@ public class RoverControl : MonoBehaviour {
     }
 
     private void Turn() {
+
         foreach (var wheel in wheels) {
             if (wheel.axle == Axle.Front) {
                 currentAngle = Mathf.Clamp(currentAngle + Time.deltaTime * keyboardTurnSensitivity * turnPower, -1, 1);
-                Debug.Log(currentAngle);
+                // Debug.Log(currentAngle);
                 if (turnPower == 0f) {
                     currentAngle -= Time.deltaTime * keyboardTurnSensitivity / 2f * Mathf.Sign(wheel.collider.steerAngle);
                 }
@@ -113,6 +118,7 @@ public class RoverControl : MonoBehaviour {
     }
 
     private void AnimateWheels() {
+
         foreach (var wheel in wheels) {
             Quaternion _rot;
             Vector3 _pos;

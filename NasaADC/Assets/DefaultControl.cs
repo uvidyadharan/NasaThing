@@ -27,14 +27,6 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Steer"",
-                    ""type"": ""Value"",
-                    ""id"": ""01ef93ea-08d6-4a63-b54a-9638cf1f1abe"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""3a32c1c2-5305-4567-836f-1f74e96fa8b1"",
@@ -43,9 +35,25 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
+                    ""id"": ""01ef93ea-08d6-4a63-b54a-9638cf1f1abe"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
                     ""id"": ""7cad54d2-3a11-4aa6-b216-614c114782eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LookMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""60a09f43-0d0e-44dd-b14a-d51dd16231a8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -84,39 +92,6 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""action"": ""Throttle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8c8e490b-c610-4785-884f-f04217b23ca4"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3e5f5442-8668-4b27-a940-df99bad7e831"",
-                    ""path"": ""<Joystick>/{Hatswitch}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -205,6 +180,50 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c8e490b-c610-4785-884f-f04217b23ca4"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e5f5442-8668-4b27-a940-df99bad7e831"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d926a64a-fd05-479a-96d4-c5de7f96d19c"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -781,9 +800,10 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Throttle = m_Player.FindAction("Throttle", throwIfNotFound: true);
-        m_Player_Steer = m_Player.FindAction("Steer", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_Steer = m_Player.FindAction("Steer", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_LookMode = m_Player.FindAction("LookMode", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -846,17 +866,19 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Throttle;
-    private readonly InputAction m_Player_Steer;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_Steer;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_LookMode;
     public struct PlayerActions
     {
         private @DefaultControl m_Wrapper;
         public PlayerActions(@DefaultControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Throttle => m_Wrapper.m_Player_Throttle;
-        public InputAction @Steer => m_Wrapper.m_Player_Steer;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @Steer => m_Wrapper.m_Player_Steer;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @LookMode => m_Wrapper.m_Player_LookMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -869,15 +891,18 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @Throttle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrottle;
                 @Throttle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrottle;
                 @Throttle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrottle;
-                @Steer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
-                @Steer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
-                @Steer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Steer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
+                @Steer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
+                @Steer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSteer;
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @LookMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
+                @LookMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
+                @LookMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -885,15 +910,18 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @Throttle.started += instance.OnThrottle;
                 @Throttle.performed += instance.OnThrottle;
                 @Throttle.canceled += instance.OnThrottle;
-                @Steer.started += instance.OnSteer;
-                @Steer.performed += instance.OnSteer;
-                @Steer.canceled += instance.OnSteer;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Steer.started += instance.OnSteer;
+                @Steer.performed += instance.OnSteer;
+                @Steer.canceled += instance.OnSteer;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @LookMode.started += instance.OnLookMode;
+                @LookMode.performed += instance.OnLookMode;
+                @LookMode.canceled += instance.OnLookMode;
             }
         }
     }
@@ -1051,9 +1079,10 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnThrottle(InputAction.CallbackContext context);
-        void OnSteer(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnLookMode(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
