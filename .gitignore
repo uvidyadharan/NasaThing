@@ -72,3 +72,4 @@ InitTestScene*.unity
 # IntelliJ
 .idea/
 LargeAssets/
+bin/
