@@ -25,6 +25,7 @@ public class RoverControl : MonoBehaviour {
     public float brakeForce = 1000f;
     public float brakeSpeed = 500f;
     public Vector3 roverCenterOfMass;
+    public Rigidbody rb;
 
     [SerializeField]
     private float maxAcceleration = 200.0f;
@@ -37,7 +38,6 @@ public class RoverControl : MonoBehaviour {
 
     private float inputX;
     private float inputY;
-    private Rigidbody rb;
     private float currentAngle;
     private Vector3 wheelModelOffset;
     private float currentBrakeForce;
@@ -53,6 +53,7 @@ public class RoverControl : MonoBehaviour {
         controls = new DefaultControl();
         controls.Player.Throttle.performed += throt => thrustPower = (throt.ReadValue<float>());
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
+        rb.centerOfMass = roverCenterOfMass;
     }
 
     private void OnEnable() {
@@ -66,7 +67,6 @@ public class RoverControl : MonoBehaviour {
     }
 
     private void Start() {
-
         wheelModelOffset = wheels[0].model.transform.position - wheels[0].collider.transform.position;
     }
 

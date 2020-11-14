@@ -17,37 +17,22 @@ public class CameraControl : MonoBehaviour
 
         controls.Enable();
     }
-
     private void OnDisable() {
 
         controls.Disable();
     }
     private void Awake() {
-        
         controls = new DefaultControl();
-        // controls.Player.Look.performed += look => Debug.Log(look.ReadValue<Vector2>());
-        controls.Player.LookMode.performed += lookmode => Debug.Log("Pressed");
     }
     void Start() {
 
-        transform.position = rover.position;
-        transform.position += cameraOffset[2] * transform.TransformDirection(rover.forward);
-        transform.position += cameraOffset[1] * transform.TransformDirection(rover.up);
-        transform.position += cameraOffset[0] * transform.TransformDirection(rover.right);
     }
-
     // Update is called once per frame
+    void FixedUpdate() {
+        Vector3 desiredPosition = rover.TransformPoint(cameraOffset);
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, 0.125f);
+        transform.position = smoothedPosition;
+        transform.eulerAngles = rover.rotation.eulerAngles;
 
-    private void Rotate(Vector2 direction) {
-
-
-    }
-    void Update() {
-
-
-        transform.position = rover.position;
-        transform.position += cameraOffset[2] * transform.TransformDirection(rover.forward);
-        transform.position += cameraOffset[1] * transform.TransformDirection(rover.up);
-        transform.position += cameraOffset[0] * transform.TransformDirection(rover.right);
     }
 }
