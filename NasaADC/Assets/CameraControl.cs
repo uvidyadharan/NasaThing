@@ -9,17 +9,16 @@ public class CameraControl : MonoBehaviour
 
     public Transform rover;
     public Vector3 cameraOffset;
+    public Vector3 cameraRotation;
     public DefaultControl controls;
     public float smoothAmount;
     
     private bool lookMode;
     // Start is called before the first frame update
     private void OnEnable() {
-
         controls.Enable();
     }
     private void OnDisable() {
-
         controls.Disable();
     }
     private void Awake() {
@@ -33,7 +32,7 @@ public class CameraControl : MonoBehaviour
         Vector3 desiredPosition = rover.TransformPoint(cameraOffset);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothAmount);
         transform.position = smoothedPosition;
-        transform.eulerAngles = rover.rotation.eulerAngles;
+        transform.eulerAngles = rover.rotation.eulerAngles + cameraRotation;
 
     }
 }
