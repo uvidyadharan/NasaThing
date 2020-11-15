@@ -73,7 +73,7 @@ public class RoverControl : MonoBehaviour {
         wheelModelOffset = wheels[0].model.transform.position - wheels[0].collider.transform.position;
     }
 
-    private void BrakeControl() {
+    private void BrakeControlControl() {
         if (brakeControl) {
             brakeControl = false;
         }
