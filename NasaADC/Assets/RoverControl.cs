@@ -38,6 +38,7 @@ public class RoverControl : MonoBehaviour {
     public float maxSpeed = 50f;
     public float speedControlForce;
     public PLoop pl;
+    public float currentSpeed;
 
     [SerializeField]
     private float maxAcceleration = 200.0f;
@@ -53,9 +54,8 @@ public class RoverControl : MonoBehaviour {
     private float currentAngle;
     private Vector3 wheelModelOffset;
     private float currentBrakeForce;
-    private float thrustPower;
-    private float turnPower;
-    private float currentSpeed;
+    private float thrustPower; // between -1 and 1
+    private float turnPower; // between -1 and 1
     private bool brakeControl;
 
     //P loop variables
@@ -107,7 +107,7 @@ public class RoverControl : MonoBehaviour {
 
     private void Move() {
         currentSpeed = Mathf.Sqrt(Mathf.Pow(rb.velocity[0], 2f)  + Mathf.Pow(rb.velocity[1], 2f) + Mathf.Pow(rb.velocity[2], 2f));
-        Debug.Log(currentSpeed);
+        // Debug.Log(currentSpeed);
 
         pl.speedOver = currentSpeed - maxSpeed;
 
@@ -131,7 +131,7 @@ public class RoverControl : MonoBehaviour {
                 // Debug.Log(wheel.collider.motorTorque);
                 // Debug.Log(wheel.collider.brakeTorque);
             }
-            Debug.Log(wheels[0].collider.brakeTorque);
+            // Debug.Log(wheels[0].collider.brakeTorque);
         }
         if (brakeControl) {
             // Brake all wheels
