@@ -26,6 +26,7 @@ public class RoverControl : MonoBehaviour {
     public float brakeSpeed = 500f;
     public Vector3 roverCenterOfMass;
     public Rigidbody rb;
+    public float turnRebound;
 
     [SerializeField]
     private float maxAcceleration = 200.0f;
@@ -43,6 +44,7 @@ public class RoverControl : MonoBehaviour {
     private float currentBrakeForce;
     private float thrustPower;
     private float turnPower;
+    private bool brakeControl;
 
     public DefaultControl controls;
     
@@ -52,6 +54,7 @@ public class RoverControl : MonoBehaviour {
 
         controls = new DefaultControl();
         controls.Player.Throttle.performed += throt => thrustPower = (throt.ReadValue<float>());
+        controls.Player.Brake.performed += bra => BrakeControl();
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
         rb.centerOfMass = roverCenterOfMass;
     }
@@ -70,9 +73,19 @@ public class RoverControl : MonoBehaviour {
         wheelModelOffset = wheels[0].model.transform.position - wheels[0].collider.transform.position;
     }
 
+    private void BrakeControl() {
+        if (brakeControl) {
+            brakeControl = false;
+        }
+        else {
+            brakeControl = true;
+        }
+    }
+
     // Update is called once per frame
 
     private void FixedUpdate() {
+        Debug.Log(brakeControl);
 
         Move();
         Turn();
@@ -90,7 +103,7 @@ public class RoverControl : MonoBehaviour {
                 // Debug.Log(wheel.collider.brakeTorque);
             }
         }
-        else {
+        if (brakeControl) {
             // Brake all wheels
             foreach (var wheel in wheels) {
                 if (wheel.brake) {
@@ -110,7 +123,7 @@ public class RoverControl : MonoBehaviour {
                 currentAngle = Mathf.Clamp(currentAngle + Time.deltaTime * keyboardTurnSensitivity * turnPower, -1, 1);
                 // Debug.Log(currentAngle);
                 if (turnPower == 0f) {
-                    currentAngle -= Time.deltaTime * keyboardTurnSensitivity / 2f * Mathf.Sign(wheel.collider.steerAngle);
+                    currentAngle -= Time.deltaTime  * turnRebound * Mathf.Sign(wheel.collider.steerAngle);
                 }
                 wheel.collider.steerAngle = Mathf.Lerp(-maxSteerAngle, maxSteerAngle, currentAngle / 2f + 0.5f);
             }

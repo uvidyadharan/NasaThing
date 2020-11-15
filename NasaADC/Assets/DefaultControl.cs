@@ -57,6 +57,14 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""10dc78e8-bbc8-4aec-b6f5-4d5271b13591"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -222,6 +230,17 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LookMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a698e9bf-b15e-4398-b957-ff29ee67caef"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -804,6 +823,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_Player_Steer = m_Player.FindAction("Steer", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_LookMode = m_Player.FindAction("LookMode", throwIfNotFound: true);
+        m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -870,6 +890,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Steer;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_LookMode;
+    private readonly InputAction m_Player_Brake;
     public struct PlayerActions
     {
         private @DefaultControl m_Wrapper;
@@ -879,6 +900,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         public InputAction @Steer => m_Wrapper.m_Player_Steer;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @LookMode => m_Wrapper.m_Player_LookMode;
+        public InputAction @Brake => m_Wrapper.m_Player_Brake;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -903,6 +925,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @LookMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
                 @LookMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
                 @LookMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookMode;
+                @Brake.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
+                @Brake.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
+                @Brake.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -922,6 +947,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @LookMode.started += instance.OnLookMode;
                 @LookMode.performed += instance.OnLookMode;
                 @LookMode.canceled += instance.OnLookMode;
+                @Brake.started += instance.OnBrake;
+                @Brake.performed += instance.OnBrake;
+                @Brake.canceled += instance.OnBrake;
             }
         }
     }
@@ -1083,6 +1111,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnSteer(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnLookMode(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
