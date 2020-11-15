@@ -898,6 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rover: {fileID: 543450651585893897}
   cameraOffset: {x: 0, y: 0.07, z: 0.09}
+  smoothAmount: 0.5
 --- !u!1001 &1028430151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,7 +909,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2b900f768811f2845a473e02170a9ae6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b900f768811f2845a473e02170a9ae6,
         type: 3}
@@ -1427,7 +1428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147913788595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10003, y: 517.21, z: 11055}
+  m_LocalPosition: {x: -10003, y: 517.24, z: 11055}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children:
   - {fileID: 1443672486361472883}
@@ -1462,9 +1463,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147913788595}
   serializedVersion: 2
-  m_Mass: 3000
+  m_Mass: 30000
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1482,23 +1483,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df4072e8a018c40884e07bf667552e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForce: 1000
+  movementForce: 10000
   brakeForce: 6000
   brakeSpeed: 2000
-  roverCenterOfMass: {x: 0, y: -30, z: 0}
+  roverCenterOfMass: {x: 0, y: -3000, z: 0}
   rb: {fileID: 919132147913788596}
-  maxAcceleration: 20
+  maxAcceleration: 200
   keyboardTurnSensitivity: 0.2
   maxSteerAngle: 30
   wheels:
   - model: {fileID: 790388207}
     collider: {fileID: 723996153}
     axle: 0
-    brake: 0
+    brake: 1
   - model: {fileID: 1867167182}
     collider: {fileID: 1508206524}
     axle: 0
-    brake: 0
+    brake: 1
   - model: {fileID: 380544874}
     collider: {fileID: 1548944370}
     axle: 1
