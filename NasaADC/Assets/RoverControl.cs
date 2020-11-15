@@ -17,6 +17,14 @@ public struct Wheel {
     public bool brake;
 }
 
+[Serializable]
+public struct PLoop {
+    public float h; // minimum brake value applied if over speed limit
+    public float b; // minimum adjustment
+    public float a;
+    public float speedCorrectionCoefficient;
+    public float speedOver;
+}
 
 public class RoverControl : MonoBehaviour {
 
@@ -27,6 +35,9 @@ public class RoverControl : MonoBehaviour {
     public Vector3 roverCenterOfMass;
     public Rigidbody rb;
     public float turnRebound;
+    public float maxSpeed = 50f;
+    public float speedControlForce;
+    public PLoop pl;
 
     [SerializeField]
     private float maxAcceleration = 200.0f;
@@ -44,7 +55,10 @@ public class RoverControl : MonoBehaviour {
     private float currentBrakeForce;
     private float thrustPower;
     private float turnPower;
+    private float currentSpeed;
     private bool brakeControl;
+
+    //P loop variables
 
     public DefaultControl controls;
     
@@ -85,8 +99,6 @@ public class RoverControl : MonoBehaviour {
     // Update is called once per frame
 
     private void FixedUpdate() {
-        // Debug.Log(brakeControl);
-        Debug.Log(rb.centerOfMass);
 
         Move();
         Turn();
@@ -94,15 +106,32 @@ public class RoverControl : MonoBehaviour {
     }
 
     private void Move() {
+        currentSpeed = Mathf.Sqrt(Mathf.Pow(rb.velocity[0], 2f)  + Mathf.Pow(rb.velocity[1], 2f) + Mathf.Pow(rb.velocity[2], 2f));
+        Debug.Log(currentSpeed);
+
+        pl.speedOver = currentSpeed - maxSpeed;
 
         if (thrustPower !=0f) {
             // Power all wheels
             foreach (var wheel in wheels) {
-                wheel.collider.brakeTorque = 0f;
+
+                if (pl.speedOver > 0) {
+                    if (pl.speedOver / pl.a + pl.b >= pl.h) {
+                        wheel.collider.brakeTorque = pl.speedOver / pl.a + pl.b;
+                    }
+                    else {
+                        wheel.collider.brakeTorque = pl.h;
+                    }
+                }
+                else {
+                        wheel.collider.brakeTorque = 0;
+                }
+
                 wheel.collider.motorTorque = thrustPower * maxAcceleration * movementForce * Time.deltaTime;
                 // Debug.Log(wheel.collider.motorTorque);
                 // Debug.Log(wheel.collider.brakeTorque);
             }
+            Debug.Log(wheels[0].collider.brakeTorque);
         }
         if (brakeControl) {
             // Brake all wheels
