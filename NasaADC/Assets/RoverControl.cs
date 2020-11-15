@@ -54,7 +54,7 @@ public class RoverControl : MonoBehaviour {
 
         controls = new DefaultControl();
         controls.Player.Throttle.performed += throt => thrustPower = (throt.ReadValue<float>());
-        controls.Player.Brake.performed += bra => BrakeControl();
+        controls.Player.Brake.performed += bra => BrakeControlControl();
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
         rb.centerOfMass = roverCenterOfMass;
     }
