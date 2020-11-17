@@ -9,10 +9,20 @@ public class AgentMove : MonoBehaviour
     Transform _destination;
 
     NavMeshAgent _navMeshAgent;
+    public int NumCheckpoints;
     public string AgentType;
+    public int radiusOfSearch;
+    public float distTravelled = 0;
+    public float totalDist;
+    public float distBetCheckpoints = 0;
+    public Vector3 lastPosition, distStart, origPosition;
+    public bool isReturn = false;
+    public bool firstTime = true;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        resetDist();
+        origPosition = transform.position;
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         if(_navMeshAgent == null)
         {
@@ -20,13 +30,51 @@ public class AgentMove : MonoBehaviour
         }
         else
         {
-            SetDestination();
+            if (_destination != null)
+                SetDestination(_destination.transform.position);
         }
     }
-    private void SetDestination()
+    void Update()
     {
-        if(_destination != null)
+        distTravelled += Vector3.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
+        if(isReturn)
         {
+            //Debug.Log(distTravelled);
+            if (distTravelled >= distBetCheckpoints)
+            {
+                //Vector3 closest = findLowestSlopePoint(transform.position, 3);
+                Debug.Log("Checkpoint at: " + transform.position);
+                resetDist();
+            }
+        }
+        if(firstTime && _navMeshAgent.remainingDistance == 0 && distTravelled > 2)
+        {
+            firstTime = false;
+            Debug.Log("reached dest");
+            totalDist = distTravelled;
+            distBetCheckpoints = totalDist / NumCheckpoints;
+            Debug.Log("DBC: " + distBetCheckpoints);
+            resetDist();
+            Debug.Log(origPosition);
+            isReturn = true;
+            SetDestination(origPosition);
+            
+        }
+        //Debug.Log("Distance Left: " + _navMeshAgent.remainingDistance + " Distance went: " + distTravelled);
+        //Debug.Log(_navMeshAgent.remainingDistance);
+        
+        //Debug.Log("Distance traveled: "+distTravelled);
+    }
+    private void resetDist()
+    {
+        distTravelled = 0;
+        lastPosition = transform.position;
+        distStart = transform.position;
+    }
+    private void SetDestination(Vector3 theDestination)
+    {
+            
             if (AgentType == "dist")
             {
                 _navMeshAgent.agentTypeID = -1372625422;
@@ -39,9 +87,8 @@ public class AgentMove : MonoBehaviour
             }
             else
                 Debug.Log("Invalid agent type");
-            Vector3 targetVector = _destination.transform.position;
-            _navMeshAgent.SetDestination(targetVector);
-        }
-    }
+            //Vector3 targetVector = theDestination.transform.position;
+            _navMeshAgent.SetDestination(theDestination);
 
+    }
 }
