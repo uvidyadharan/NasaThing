@@ -1,4 +1,4 @@
 Put everything in "Scripts" in a folder together. Put the "navmeshsurface" script onto the moon object. 
 Put "navigationbakernew" onto a object that is the parent of the moon object. Idk why it has to do this
 Put the Agent Move script onto the cube or something that moves rlly quickly throughout the path.
-For the Agent Move script, set the destination object, the number of checkpoints, the Agent Type "dist" or "flat"(can easily be changed to toggle with boolean values instead of strings using toggle switch). Dw about any of the other values, they get set in-code. 
+For the Agent Move script, set the destination object, the number of checkpoints, the Agent Type "dist" or "flat"(can easily be changed to toggle with boolean values instead of strings using toggle switch). Dw about any of the other values, they get set in-code. The script will write the Vector3 locations for the checkpoints to the console, but it can easily be changed to write to a file, or call another function and have that as input for it.
