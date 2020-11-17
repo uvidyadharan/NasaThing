@@ -25,4 +25,5 @@ public class UIControl : MonoBehaviour
         speedometer.text = Mathf.Round(roverAttributes.currentSpeed).ToString() + " MPH";
 
     }
+
 }

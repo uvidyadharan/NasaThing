@@ -33,6 +33,7 @@ public class RoverControl : MonoBehaviour {
     public float brakeForce = 1000f;
     public float brakeSpeed = 500f;
     public Vector3 roverCenterOfMass;
+    public Vector3 wheelColliderOffset;
     public Rigidbody rb;
     public float turnRebound;
     public float maxSpeed = 50f;
@@ -167,7 +168,7 @@ public class RoverControl : MonoBehaviour {
             Vector3 _pos;
             wheel.collider.GetWorldPose(out _pos, out _rot);
             wheel.model.transform.rotation = _rot;
-            wheel.model.transform.position = _pos + new Vector3(0, 0.3f, 0);
+            wheel.model.transform.position = _pos + wheelColliderOffset;
         }
     }
 }
