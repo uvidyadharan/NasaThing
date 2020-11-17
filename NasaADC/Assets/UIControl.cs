@@ -7,6 +7,7 @@ public class UIControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text speedometer;
+    public string speedometerText;
 
     private GameObject roverObject;
     private RoverControl roverAttributes;
@@ -22,7 +23,7 @@ public class UIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedometer.text = Mathf.Round(roverAttributes.currentSpeed).ToString() + " MPH";
+        speedometer.text = Mathf.Round(roverAttributes.currentSpeed).ToString() + speedometerText;
 
     }
 
