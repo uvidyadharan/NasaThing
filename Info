@@ -1,2 +1,3 @@
 Put everything in "Scripts" in a folder together. Put the "navmeshsurface" script onto the moon object. 
 Put "navigationbakernew" onto a object that is the parent of the moon object. Idk why it has to do this
+Put the Agent Move script onto the cube or something that moves rlly quickly throughout the path.
