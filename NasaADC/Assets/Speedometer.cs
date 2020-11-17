@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIControl : MonoBehaviour
+public class Speedometer : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text speedometer;
@@ -13,15 +13,15 @@ public class UIControl : MonoBehaviour
     private GameObject roverObject;
     private RoverControl roverAttributes;
     private int speedometerSegmentsShown;
-    static Vector3 shown = new Vector3(1, 1, 1);
-    static Vector3 hidden = new Vector3(0, 0, 0);
+    static Vector3 shown = new Vector3(1f, 1f, 1f);
+    static Vector3 hidden = new Vector3(0f, 0f, 0f);
 
-    
     void Start()
     {
         roverObject = GameObject.Find("MoonRover");
         roverAttributes = roverObject.GetComponent<RoverControl>();
     }
+
 
     // Update is called once per frame
     void Update()

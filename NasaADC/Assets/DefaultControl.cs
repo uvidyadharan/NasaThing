@@ -348,6 +348,30 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MapPanY"",
+                    ""type"": ""Value"",
+                    ""id"": ""6b650ed0-444b-4516-be0b-9f2f797ea203"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MapPanX"",
+                    ""type"": ""Value"",
+                    ""id"": ""88794ced-9e54-4709-aa98-2cd921fa7d84"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MapShow"",
+                    ""type"": ""Button"",
+                    ""id"": ""d92284b2-2282-48e8-991e-548dec31ea01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -768,6 +792,83 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a3372f1c-ebcd-40a2-866f-67286401f8c1"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanY"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""8eb62ead-216e-43b9-8fb0-74439edbae6d"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""87344570-3c11-459c-8b33-ecc4bf33e392"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""9e296596-8d0c-4327-9fc6-d1862e26ac51"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanX"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""50229fa2-de03-4182-a5a1-249391589d85"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""f995c9e4-23bd-44a5-84d1-ee8669310aed"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapPanX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""214284cc-7f81-4dab-8159-4299b65cf7fa"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MapShow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -856,6 +957,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_MapPanY = m_UI.FindAction("MapPanY", throwIfNotFound: true);
+        m_UI_MapPanX = m_UI.FindAction("MapPanX", throwIfNotFound: true);
+        m_UI_MapShow = m_UI.FindAction("MapShow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -996,6 +1100,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_MapPanY;
+    private readonly InputAction m_UI_MapPanX;
+    private readonly InputAction m_UI_MapShow;
     public struct UIActions
     {
         private @DefaultControl m_Wrapper;
@@ -1010,6 +1117,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @MapPanY => m_Wrapper.m_UI_MapPanY;
+        public InputAction @MapPanX => m_Wrapper.m_UI_MapPanX;
+        public InputAction @MapShow => m_Wrapper.m_UI_MapShow;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1049,6 +1159,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @MapPanY.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanY;
+                @MapPanY.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanY;
+                @MapPanY.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanY;
+                @MapPanX.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanX;
+                @MapPanX.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanX;
+                @MapPanX.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMapPanX;
+                @MapShow.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
+                @MapShow.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
+                @MapShow.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1083,6 +1202,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @MapPanY.started += instance.OnMapPanY;
+                @MapPanY.performed += instance.OnMapPanY;
+                @MapPanY.canceled += instance.OnMapPanY;
+                @MapPanX.started += instance.OnMapPanX;
+                @MapPanX.performed += instance.OnMapPanX;
+                @MapPanX.canceled += instance.OnMapPanX;
+                @MapShow.started += instance.OnMapShow;
+                @MapShow.performed += instance.OnMapShow;
+                @MapShow.canceled += instance.OnMapShow;
             }
         }
     }
@@ -1154,5 +1282,8 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnMapPanY(InputAction.CallbackContext context);
+        void OnMapPanX(InputAction.CallbackContext context);
+        void OnMapShow(InputAction.CallbackContext context);
     }
 }
