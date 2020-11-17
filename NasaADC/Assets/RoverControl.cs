@@ -57,6 +57,7 @@ public class RoverControl : MonoBehaviour {
     private float thrustPower; // between -1 and 1
     private float turnPower; // between -1 and 1
     private bool brakeControl;
+    private bool parkingBrake = false;
 
     //P loop variables
 
@@ -70,6 +71,7 @@ public class RoverControl : MonoBehaviour {
         controls.Player.Throttle.performed += throt => thrustPower = (throt.ReadValue<float>());
         controls.Player.Brake.performed += bra => BrakeControlControl();
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
+        controls.Player.ParkingBrake.performed += pbrk => ParkingBrake();
         rb.centerOfMass = roverCenterOfMass;
         maxSpeed *= 3.6f;
     }
@@ -91,6 +93,7 @@ public class RoverControl : MonoBehaviour {
     private void BrakeControlControl() {
         if (brakeControl) {
             brakeControl = false;
+
         }
         else {
             brakeControl = true;
@@ -104,6 +107,15 @@ public class RoverControl : MonoBehaviour {
         Move();
         Turn();
         AnimateWheels();
+    }
+
+    private void ParkingBrake() {
+        if (parkingBrake) {
+            parkingBrake = false;
+        }
+        else {
+            parkingBrake = true;
+        }
     }
 
     private void Move() {
@@ -142,6 +154,9 @@ public class RoverControl : MonoBehaviour {
                     else {
                         wheel.collider.brakeTorque = pl.h;
                     }
+                }
+                else if (parkingBrake) {
+                    wheel.collider.brakeTorque = brakeForce;
                 }
                 else {
                         wheel.collider.brakeTorque = 0;

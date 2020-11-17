@@ -65,6 +65,14 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ParkingBrake"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e3e3426-9cbd-4d89-8a3c-26800807e51d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -241,6 +249,17 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b4fe8c8-54f4-4f9a-8955-02e3e54cbc85"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ParkingBrake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -824,6 +843,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_LookMode = m_Player.FindAction("LookMode", throwIfNotFound: true);
         m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
+        m_Player_ParkingBrake = m_Player.FindAction("ParkingBrake", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -891,6 +911,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_LookMode;
     private readonly InputAction m_Player_Brake;
+    private readonly InputAction m_Player_ParkingBrake;
     public struct PlayerActions
     {
         private @DefaultControl m_Wrapper;
@@ -901,6 +922,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @LookMode => m_Wrapper.m_Player_LookMode;
         public InputAction @Brake => m_Wrapper.m_Player_Brake;
+        public InputAction @ParkingBrake => m_Wrapper.m_Player_ParkingBrake;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -928,6 +950,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @Brake.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
                 @Brake.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
                 @Brake.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
+                @ParkingBrake.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
+                @ParkingBrake.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
+                @ParkingBrake.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -950,6 +975,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @Brake.started += instance.OnBrake;
                 @Brake.performed += instance.OnBrake;
                 @Brake.canceled += instance.OnBrake;
+                @ParkingBrake.started += instance.OnParkingBrake;
+                @ParkingBrake.performed += instance.OnParkingBrake;
+                @ParkingBrake.canceled += instance.OnParkingBrake;
             }
         }
     }
@@ -1112,6 +1140,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnLookMode(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
+        void OnParkingBrake(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
