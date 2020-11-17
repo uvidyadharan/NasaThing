@@ -29,7 +29,6 @@ public struct PLoop {
 public class RoverControl : MonoBehaviour {
 
 
-    public float movementForce = 1000f;
     public float brakeForce = 1000f;
     public float brakeSpeed = 500f;
     public Vector3 roverCenterOfMass;
@@ -42,7 +41,7 @@ public class RoverControl : MonoBehaviour {
     public float currentSpeed;
 
     [SerializeField]
-    private float maxAcceleration = 200.0f;
+    private float acceleration = 200.0f;
     [SerializeField]
     private float keyboardTurnSensitivity = 0.3f;
     [SerializeField]
@@ -72,6 +71,7 @@ public class RoverControl : MonoBehaviour {
         controls.Player.Brake.performed += bra => BrakeControlControl();
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
         rb.centerOfMass = roverCenterOfMass;
+        maxSpeed *= 3.6f;
     }
 
     private void OnEnable() {
@@ -128,7 +128,7 @@ public class RoverControl : MonoBehaviour {
                         wheel.collider.brakeTorque = 0;
                 }
 
-                wheel.collider.motorTorque = thrustPower * maxAcceleration * movementForce * Time.deltaTime;
+                wheel.collider.motorTorque = thrustPower * acceleration * Time.deltaTime;
                 // Debug.Log(wheel.collider.motorTorque);
                 // Debug.Log(wheel.collider.brakeTorque);
             }

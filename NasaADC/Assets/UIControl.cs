@@ -26,8 +26,8 @@ public class UIControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedometer.text = Mathf.Round(roverAttributes.currentSpeed).ToString() + speedometerText;
-        speedometerSegmentsShown = Mathf.FloorToInt(roverAttributes.maxSpeed / roverAttributes.currentSpeed) * 10;
+        speedometer.text = Mathf.Round(roverAttributes.currentSpeed / 3.6f).ToString() + speedometerText;
+        speedometerSegmentsShown = Mathf.RoundToInt((roverAttributes.currentSpeed / roverAttributes.maxSpeed) * 10f);
         for (int segment = 0; segment < 10; segment++) {
             if (segment < speedometerSegmentsShown) {
                 speedometerSegments[segment].localScale = shown;
