@@ -114,6 +114,25 @@ public class RoverControl : MonoBehaviour {
 
         if (thrustPower !=0f) {
             // Power all wheels
+
+            foreach (var wheel in wheels) {
+                wheel.collider.motorTorque = thrustPower * acceleration * Time.deltaTime;
+                // Debug.Log(wheel.collider.motorTorque);
+                // Debug.Log(wheel.collider.brakeTorque);
+            }
+        }
+        if (brakeControl) {
+            // Brake all wheels
+            foreach (var wheel in wheels) {
+                if (wheel.brake) {
+                    if (wheel.collider.brakeTorque < brakeForce) {
+                        wheel.collider.brakeTorque += brakeSpeed * Time.deltaTime;
+                        // Debug.Log(wheel.collider.brakeTorque);
+                    }
+                }
+            }
+        }
+        else {
             foreach (var wheel in wheels) {
 
                 if (pl.speedOver > 0) {
@@ -126,22 +145,6 @@ public class RoverControl : MonoBehaviour {
                 }
                 else {
                         wheel.collider.brakeTorque = 0;
-                }
-
-                wheel.collider.motorTorque = thrustPower * acceleration * Time.deltaTime;
-                // Debug.Log(wheel.collider.motorTorque);
-                // Debug.Log(wheel.collider.brakeTorque);
-            }
-            // Debug.Log(wheels[0].collider.brakeTorque);
-        }
-        if (brakeControl) {
-            // Brake all wheels
-            foreach (var wheel in wheels) {
-                if (wheel.brake) {
-                    if (wheel.collider.brakeTorque < brakeForce) {
-                        wheel.collider.brakeTorque += brakeSpeed * Time.deltaTime;
-                        // Debug.Log(wheel.collider.brakeTorque);
-                    }
                 }
             }
         }
