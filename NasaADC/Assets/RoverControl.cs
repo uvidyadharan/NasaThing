@@ -116,6 +116,17 @@ public class RoverControl : MonoBehaviour {
             // Power all wheels
             foreach (var wheel in wheels) {
 
+                if (pl.speedOver > 0) {
+                    if (pl.speedOver / pl.a + pl.b >= pl.h) {
+                        wheel.collider.brakeTorque = pl.speedOver / pl.a + pl.b;
+                    }
+                    else {
+                        wheel.collider.brakeTorque = pl.h;
+                    }
+                }
+                else {
+                        wheel.collider.brakeTorque = 0;
+                }
 
                 wheel.collider.motorTorque = thrustPower * acceleration * Time.deltaTime;
                 // Debug.Log(wheel.collider.motorTorque);
@@ -131,22 +142,6 @@ public class RoverControl : MonoBehaviour {
                         wheel.collider.brakeTorque += brakeSpeed * Time.deltaTime;
                         // Debug.Log(wheel.collider.brakeTorque);
                     }
-                }
-            }
-        }
-        else {
-            foreach (var wheel in wheels) {
-
-                if (pl.speedOver > 0) {
-                    if (pl.speedOver / pl.a + pl.b >= pl.h) {
-                        wheel.collider.brakeTorque = pl.speedOver / pl.a + pl.b;
-                    }
-                    else {
-                        wheel.collider.brakeTorque = pl.h;
-                    }
-                }
-                else {
-                        wheel.collider.brakeTorque = 0;
                 }
             }
         }
