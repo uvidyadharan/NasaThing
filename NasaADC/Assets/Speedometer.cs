@@ -74,13 +74,10 @@ public class Speedometer : MonoBehaviour
         
 
         statusDisplay.text = lat  + "\n" + lon + "\n" + height + "\n" + elev + "\n" +aziumuth;
-        //Debug.Log("Azimuth: " + aziumuth+"Elev: " + elev + "Lat: " + lat + "Lon: " + lon + "Height: " + height + "X: " + x + "Y: " + y + "Z: " + z);
+        Debug.Log("Azimuth: " + aziumuth+"Elev: " + elev + "Lat: " + lat + "Lon: " + lon + "Height: " + height + "X: " + x + "Y: " + y + "Z: " + z);
 
         //Azimuth 
         
-        
-
-
 
 
 
