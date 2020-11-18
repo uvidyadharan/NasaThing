@@ -10,11 +10,14 @@ public class Speedometer : MonoBehaviour
     public string speedometerText;
     public List<Transform> speedometerSegments;
 
+    public Text statusDisplay;
+
     private GameObject roverObject;
     private RoverControl roverAttributes;
     private int speedometerSegmentsShown;
     static Vector3 shown = new Vector3(1f, 1f, 1f);
     static Vector3 hidden = new Vector3(0f, 0f, 0f);
+    private float roundingConstant = 1000f;
 
     void Start()
     {
@@ -50,9 +53,13 @@ public class Speedometer : MonoBehaviour
         float rz = (361000000f - x)*Mathf.Cos(lat)*Mathf.Cos(lon) + y*Mathf.Cos(lat)*Mathf.Sin(lon)+(-42100000f - z)*Mathf.Sin(lat);
 
         float elev = Mathf.Asin(rz/rangeAb);
+        lat = (Mathf.Round(lat * roundingConstant) / roundingConstant);
+        lon = (Mathf.Round(lon * roundingConstant) / roundingConstant);
+        height = (Mathf.Round(height * roundingConstant) / roundingConstant);
+        elev = (Mathf.Round(elev * roundingConstant) / roundingConstant);
         
-
-        Debug.Log("Elev: " + elev + "Lat: " + lat + "Lon: " + lon + "Height: " + height);
+        statusDisplay.text = lat  + "\n" + lon + "\n" + height + "\n" + elev;
+        // Debug.Log("Elev: " + elev + "Lat: " + lat + "Lon: " + lon + "Height: " + height);
 
         //Azimuth 
         

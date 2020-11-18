@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     public Projector slopeMapProjector;
     public RawImage HMToggle;
     public RawImage SMToggle;
+
+    //map assets
+    public RawImage HMToggleMap;
+    public RawImage SMToggleMap;
     
     private bool mapShown = false;
     private bool slopeMapShown = true;
@@ -33,8 +37,16 @@ public class UIManager : MonoBehaviour
         mapView.localScale = hidden;
         blurLayer.localScale = hidden;
         mapShown = false;
-        SlopeMapToggle();
-        HeightMapToggle();
+
+        slopeMapShown = false;
+        slopeMapProjector.orthographic = false;
+        SMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
+        SMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
+
+        heightMapShown = false;
+        heightMapProjector.orthographic = false;
+        HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
+        HMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
     }
 
     public void SlopeMapToggle() {
@@ -42,6 +54,8 @@ public class UIManager : MonoBehaviour
             slopeMapShown = false;
             slopeMapProjector.orthographic = false;
             SMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
+            SMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
+
         }
         else {
             if (heightMapShown) {
@@ -50,22 +64,27 @@ public class UIManager : MonoBehaviour
             slopeMapShown = true;
             slopeMapProjector.orthographic = true;
             SMToggle.color = new Color(0.185f, 1f, 0f, 1f);
+            SMToggleMap.color = new Color(0.185f, 1f, 0f, 1f);
+
         }
     }
 
     public void HeightMapToggle() {
+        Debug.Log(heightMapShown);
         if (heightMapShown) {
             heightMapShown = false;
             heightMapProjector.orthographic = false;
             HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
+            HMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
         }
         else {
-            if (slopeMapShown = true) {
+            if (slopeMapShown) {
                 SlopeMapToggle();
             }
             heightMapShown = true;
             heightMapProjector.orthographic = true;
             HMToggle.color = new Color(0.185f, 1f, 0f, 1f);
+            HMToggleMap.color = new Color(0.185f, 1f, 0f, 1f);
         }
     }
 
@@ -73,13 +92,11 @@ public class UIManager : MonoBehaviour
         if (mapShown) {
             mapView.localScale = hidden;
             blurLayer.localScale = hidden;
-            rover.SetActive(true);
             mapShown = false;
         }
         else {
             mapView.localScale = shown;
             blurLayer.localScale = shown;
-            rover.SetActive(false);
             mapShown = true;
         }
     }

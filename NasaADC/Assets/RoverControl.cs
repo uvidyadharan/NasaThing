@@ -109,7 +109,7 @@ public class RoverControl : MonoBehaviour {
         AnimateWheels();
     }
 
-    private void ParkingBrake() {
+    public void ParkingBrake() {
         if (parkingBrake) {
             parkingBrake = false;
         }

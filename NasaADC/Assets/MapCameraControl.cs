@@ -17,6 +17,7 @@ public class MapCameraControl : MonoBehaviour
     public float mapSenseX;
     public float mapSenseY;
     public bool cameraIsOrtho;
+    public RawImage orthoSelectorImage;
 
     private float controlDirX;
     private float controlDirY;
@@ -31,11 +32,13 @@ public class MapCameraControl : MonoBehaviour
             cameraIsOrtho = false;
             mapCamera.orthographic = false;
             mapCamera.fieldOfView = 60f;
+            orthoSelectorImage.color = new Color(0.3f, 0.3f, 0.3f,1f);
         }
         else {
             cameraIsOrtho = true;
             mapCamera.orthographic = true;
             mapCamera.orthographicSize = (transform.position.y - moonSurface.SampleHeight(camPosition)) / Mathf.Sqrt(3);
+            orthoSelectorImage.color = new Color(0.185f, 1f, 0f, 1f);
         }
     }
 
@@ -51,6 +54,7 @@ public class MapCameraControl : MonoBehaviour
         controls.UI.Enable();
         controls.UI.MapPanX.performed += mpanx => controlDirX = (mpanx.ReadValue<float>());
         controls.UI.MapPanY.performed += mpany => controlDirY = (mpany.ReadValue<float>());
+        orthoSelectorImage.color = new Color(0.3f, 0.3f, 0.3f,1f);
     }
 
 
