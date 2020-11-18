@@ -24,11 +24,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.99999996"
-     inkscape:cx="3866.0674"
-     inkscape:cy="1081.7473"
+     inkscape:zoom="2.828427"
+     inkscape:cx="296.4976"
+     inkscape:cy="614.03363"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1204"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:pagecheckerboard="true"
@@ -78,48 +78,82 @@
        id="g164"
        inkscape:export-xdpi="95.053642"
        inkscape:export-ydpi="95.053642">
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24"
-         width="50.373821"
-         height="11.653147"
-         x="53.223289"
-         y="110.68623" />
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24-6"
-         width="50.373821"
-         height="11.653147"
-         x="53.223289"
-         y="122.33938" />
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24-6-3"
-         width="50.373821"
-         height="11.653147"
-         x="53.223289"
-         y="133.99252" />
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.388538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24-0"
-         width="29.544518"
-         height="11.692462"
-         x="103.53813"
-         y="110.62726" />
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.388538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24-6-8"
-         width="29.544518"
-         height="11.692462"
-         x="103.53813"
-         y="122.31973" />
-      <rect
-         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.388538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         id="rect24-6-3-8"
-         width="29.544518"
-         height="11.692462"
-         x="103.53813"
-         y="134.01218" />
+      <g
+         id="g1204"
+         inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\LLHDisplayFrame.png"
+         inkscape:export-xdpi="95.053642"
+         inkscape:export-ydpi="95.053642">
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24"
+           width="50.373821"
+           height="11.653147"
+           x="53.223289"
+           y="110.68623" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6"
+           width="50.373821"
+           height="11.653147"
+           x="53.223289"
+           y="122.33938" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3"
+           width="50.373821"
+           height="11.653147"
+           x="53.223289"
+           y="133.99252" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.447185;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-0"
+           width="39.176029"
+           height="11.680709"
+           x="103.59711"
+           y="110.65867" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.447185;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-8"
+           width="39.176029"
+           height="11.680709"
+           x="103.59711"
+           y="122.33939" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.447185;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3-8"
+           width="39.176029"
+           height="11.680709"
+           x="103.59711"
+           y="134.02008" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3-6"
+           width="50.373821"
+           height="11.653147"
+           x="53.282265"
+           y="145.62602" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.447185;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3-8-8"
+           width="39.176033"
+           height="11.680709"
+           x="103.67531"
+           y="145.64189" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.506484;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3-6-5"
+           width="50.373821"
+           height="11.653147"
+           x="53.341236"
+           y="157.25952" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.447185;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           id="rect24-6-3-8-8-6"
+           width="39.176033"
+           height="11.680709"
+           x="103.75351"
+           y="157.2637" />
+      </g>
     </g>
     <image
        width="86.518753"
@@ -350,24 +384,31 @@
        id="image1360"
        x="293.67014"
        y="50.58112" />
-    <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.499094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       id="rect24-3-9"
-       width="238.76245"
-       height="238.98965"
-       x="579.67505"
-       y="115.54601" />
-    <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.422496;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       id="rect24-3-9-6"
-       width="16.768017"
-       height="170.11336"
-       x="818.99487"
-       y="115.45766" />
+    <g
+       id="g1176"
+       transform="translate(1.8520834,10.31875)"
+       inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\mapframe.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.499094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="rect24-3-9"
+         width="238.76245"
+         height="238.98965"
+         x="579.67505"
+         y="115.54601" />
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:0.422496;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="rect24-3-9-6"
+         width="16.768017"
+         height="170.11336"
+         x="818.99487"
+         y="115.45766" />
+    </g>
     <g
        id="g1175-9"
        style="stroke:#ffffff;stroke-width:0.317069;stroke-linecap:butt;stroke-opacity:1"
-       transform="matrix(1.5955896,0,0,1.5585171,715.80439,-163.83962)">
+       transform="matrix(1.5955896,0,0,1.5585171,752.31712,-163.83962)">
       <path
          style="fill:none;stroke:#ffffff;stroke-width:0.317069;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 66.46659,261.99095 7.177135,-5.82565 -0.0071,5.95474"
@@ -390,7 +431,7 @@
     </g>
     <g
        id="g1171-5"
-       transform="matrix(1.1945368,0,0,1.1945368,731.89622,-80.323183)"
+       transform="matrix(1.1945368,0,0,1.1945368,768.40895,-80.323183)"
        style="stroke:#ffffff;stroke-width:0.418572;stroke-opacity:1">
       <path
          style="fill:none;stroke:#ffffff;stroke-width:0.418572;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -422,7 +463,8 @@
        id="g1762"
        inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\orthoicon.png"
        inkscape:export-xdpi="192"
-       inkscape:export-ydpi="192">
+       inkscape:export-ydpi="192"
+       transform="translate(36.512517)">
       <path
          style="fill:none;stroke:#ffffff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 827.65286,253.29918 v -6.68784"
@@ -445,7 +487,8 @@
          id="path1464-1-6" />
     </g>
     <g
-       id="g1767">
+       id="g1767"
+       transform="translate(36.512517)">
       <path
          style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path1591"
@@ -472,7 +515,8 @@
        id="g1770"
        inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\followicon.png"
        inkscape:export-xdpi="192"
-       inkscape:export-ydpi="192">
+       inkscape:export-ydpi="192"
+       transform="translate(36.512517)">
       <path
          style="fill:none;stroke:#ffffff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 821.77328,282.77163 5.9333,-10.48905 5.93329,10.48909 -5.93329,-4.94416 z"
@@ -485,7 +529,10 @@
        width="15.345129"
        height="15.345129"
        x="887.922"
-       y="117.04588" />
+       y="117.04588"
+       inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\sliderbody.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <path
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.965935;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path1682"
@@ -498,50 +545,53 @@
        sodipodi:end="1.3061939"
        sodipodi:open="true"
        sodipodi:arc-type="arc"
-       d="m 909.12591,169.13375 a 15.511191,15.508689 0 0 1 -19.02009,-10.92304 15.511191,15.508689 0 0 1 10.92168,-19.01882 15.511191,15.508689 0 0 1 19.02368,10.9168 15.511191,15.508689 0 0 1 -10.91544,19.0224" />
+       d="m 909.12591,169.13375 a 15.511191,15.508689 0 0 1 -19.02009,-10.92304 15.511191,15.508689 0 0 1 10.92168,-19.01882 15.511191,15.508689 0 0 1 19.02368,10.9168 15.511191,15.508689 0 0 1 -10.91544,19.0224"
+       inkscape:export-filename="C:\Users\Samuel Lihn\Documents\NasaThing\NasaADC\Assets\UI\sliderhandle.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
     <text
        xml:space="preserve"
        style="font-size:10.5833px;line-height:1.25;font-family:'Seven Segment';-inkscape-font-specification:'Seven Segment';fill:#00ff00;stroke-width:0.264583"
        x="756.71796"
-       y="126.17467"
+       y="75.374649"
        id="text1701"><tspan
          sodipodi:role="line"
          id="tspan1699"
          x="756.71796"
-         y="126.17467"
+         y="75.374649"
          style="fill:#00ff00;stroke-width:0.264583">Heightmap</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.5833px;line-height:1.25;font-family:'Seven Segment';-inkscape-font-specification:'Seven Segment';fill:#00ff00;stroke-width:0.264583"
        x="704.758"
-       y="126.05589"
+       y="75.255875"
        id="text1701-5"><tspan
          sodipodi:role="line"
          id="tspan1699-5"
          x="704.758"
-         y="126.05589"
+         y="75.255875"
          style="fill:#00ff00;stroke-width:0.264583">Slopemap |</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.5833px;line-height:1.25;font-family:'Seven Segment';-inkscape-font-specification:'Seven Segment';fill:#00ff00;stroke-width:0.264583"
        x="635.56262"
-       y="125.51112"
+       y="74.711098"
        id="text1701-5-8"><tspan
          sodipodi:role="line"
          id="tspan1699-5-2"
          x="635.56262"
-         y="125.51112"
+         y="74.711098"
          style="fill:#00ff00;stroke-width:0.264583">Orthographic | </tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10.5833px;line-height:1.25;font-family:'Seven Segment';-inkscape-font-specification:'Seven Segment';fill:#00ff00;stroke-width:0.264583"
        x="582.22772"
-       y="125.55022"
+       y="74.750198"
        id="text1701-5-8-0"><tspan
          sodipodi:role="line"
          id="tspan1699-5-2-9"
          x="582.22772"
-         y="125.55022"
+         y="74.750198"
          style="fill:#00ff00;stroke-width:0.264583">Following | </tspan></text>
     <g
        id="g1767-3"

@@ -73,6 +73,30 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Light"",
+                    ""type"": ""Button"",
+                    ""id"": ""2af6e237-7fcb-4ce8-bdef-d5778890a23e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CAM1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e0955ad-6953-4a9a-b66b-e5d024821bb6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CAM2"",
+                    ""type"": ""Button"",
+                    ""id"": ""543c90f6-c47a-4772-89ef-991eef50ea02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -260,6 +284,39 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ParkingBrake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ca3db45-77b5-4bd6-a1a4-c849d9392df6"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3585929a-aea8-48da-88c7-782770c2e84d"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CAM1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d04a87b1-c072-41f4-a7e9-19c87c215563"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CAM2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -945,6 +1002,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_Player_LookMode = m_Player.FindAction("LookMode", throwIfNotFound: true);
         m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
         m_Player_ParkingBrake = m_Player.FindAction("ParkingBrake", throwIfNotFound: true);
+        m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
+        m_Player_CAM1 = m_Player.FindAction("CAM1", throwIfNotFound: true);
+        m_Player_CAM2 = m_Player.FindAction("CAM2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1016,6 +1076,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_LookMode;
     private readonly InputAction m_Player_Brake;
     private readonly InputAction m_Player_ParkingBrake;
+    private readonly InputAction m_Player_Light;
+    private readonly InputAction m_Player_CAM1;
+    private readonly InputAction m_Player_CAM2;
     public struct PlayerActions
     {
         private @DefaultControl m_Wrapper;
@@ -1027,6 +1090,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         public InputAction @LookMode => m_Wrapper.m_Player_LookMode;
         public InputAction @Brake => m_Wrapper.m_Player_Brake;
         public InputAction @ParkingBrake => m_Wrapper.m_Player_ParkingBrake;
+        public InputAction @Light => m_Wrapper.m_Player_Light;
+        public InputAction @CAM1 => m_Wrapper.m_Player_CAM1;
+        public InputAction @CAM2 => m_Wrapper.m_Player_CAM2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1057,6 +1123,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @ParkingBrake.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
                 @ParkingBrake.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
                 @ParkingBrake.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParkingBrake;
+                @Light.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
+                @Light.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
+                @Light.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLight;
+                @CAM1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM1;
+                @CAM1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM1;
+                @CAM1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM1;
+                @CAM2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM2;
+                @CAM2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM2;
+                @CAM2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCAM2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1082,6 +1157,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @ParkingBrake.started += instance.OnParkingBrake;
                 @ParkingBrake.performed += instance.OnParkingBrake;
                 @ParkingBrake.canceled += instance.OnParkingBrake;
+                @Light.started += instance.OnLight;
+                @Light.performed += instance.OnLight;
+                @Light.canceled += instance.OnLight;
+                @CAM1.started += instance.OnCAM1;
+                @CAM1.performed += instance.OnCAM1;
+                @CAM1.canceled += instance.OnCAM1;
+                @CAM2.started += instance.OnCAM2;
+                @CAM2.performed += instance.OnCAM2;
+                @CAM2.canceled += instance.OnCAM2;
             }
         }
     }
@@ -1269,6 +1353,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnLookMode(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnParkingBrake(InputAction.CallbackContext context);
+        void OnLight(InputAction.CallbackContext context);
+        void OnCAM1(InputAction.CallbackContext context);
+        void OnCAM2(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -40,6 +40,9 @@ public class RoverControl : MonoBehaviour {
     public PLoop pl;
     public float currentSpeed;
 
+    public Light headlightL;
+    public Light headlightR;
+
     [SerializeField]
     private float acceleration = 200.0f;
     [SerializeField]
@@ -58,6 +61,7 @@ public class RoverControl : MonoBehaviour {
     private float turnPower; // between -1 and 1
     private bool brakeControl;
     private bool parkingBrake = false;
+    private bool headlights;
 
     //P loop variables
 
@@ -72,8 +76,26 @@ public class RoverControl : MonoBehaviour {
         controls.Player.Brake.performed += bra => BrakeControlControl();
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
         controls.Player.ParkingBrake.performed += pbrk => ParkingBrake();
+        controls.Player.Light.performed += light => HeadlightToggle();
         rb.centerOfMass = roverCenterOfMass;
         maxSpeed *= 3.6f;
+        headlights = true;
+        headlightL.intensity = 10;
+        headlightR.intensity = 10;
+    }
+
+    private void HeadlightToggle() {
+        if(headlights) {
+            headlightL.intensity = 0;
+            headlightR.intensity = 0;
+        }
+        else {
+            headlightL.intensity = 10;
+            headlightR.intensity = 10;
+        }
+        headlights = !headlights;
+
+
     }
 
     private void OnEnable() {
