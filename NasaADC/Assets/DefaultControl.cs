@@ -429,6 +429,14 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""UIHide"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc9a3fc2-c052-4732-aa76-4ea65cf47ec9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -926,6 +934,17 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""action"": ""MapShow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a02fc19-1c4c-47c0-b936-a352bee3f9f0"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UIHide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1020,6 +1039,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_UI_MapPanY = m_UI.FindAction("MapPanY", throwIfNotFound: true);
         m_UI_MapPanX = m_UI.FindAction("MapPanX", throwIfNotFound: true);
         m_UI_MapShow = m_UI.FindAction("MapShow", throwIfNotFound: true);
+        m_UI_UIHide = m_UI.FindAction("UIHide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1187,6 +1207,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_MapPanY;
     private readonly InputAction m_UI_MapPanX;
     private readonly InputAction m_UI_MapShow;
+    private readonly InputAction m_UI_UIHide;
     public struct UIActions
     {
         private @DefaultControl m_Wrapper;
@@ -1204,6 +1225,7 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         public InputAction @MapPanY => m_Wrapper.m_UI_MapPanY;
         public InputAction @MapPanX => m_Wrapper.m_UI_MapPanX;
         public InputAction @MapShow => m_Wrapper.m_UI_MapShow;
+        public InputAction @UIHide => m_Wrapper.m_UI_UIHide;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1252,6 +1274,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @MapShow.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
                 @MapShow.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
                 @MapShow.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMapShow;
+                @UIHide.started -= m_Wrapper.m_UIActionsCallbackInterface.OnUIHide;
+                @UIHide.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnUIHide;
+                @UIHide.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnUIHide;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1295,6 +1320,9 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                 @MapShow.started += instance.OnMapShow;
                 @MapShow.performed += instance.OnMapShow;
                 @MapShow.canceled += instance.OnMapShow;
+                @UIHide.started += instance.OnUIHide;
+                @UIHide.performed += instance.OnUIHide;
+                @UIHide.canceled += instance.OnUIHide;
             }
         }
     }
@@ -1372,5 +1400,6 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnMapPanY(InputAction.CallbackContext context);
         void OnMapPanX(InputAction.CallbackContext context);
         void OnMapShow(InputAction.CallbackContext context);
+        void OnUIHide(InputAction.CallbackContext context);
     }
 }

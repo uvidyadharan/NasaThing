@@ -416,6 +416,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "UIHide",
+                    "type": "Button",
+                    "id": "fc9a3fc2-c052-4732-aa76-4ea65cf47ec9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -911,6 +919,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MapShow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a02fc19-1c4c-47c0-b936-a352bee3f9f0",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UIHide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

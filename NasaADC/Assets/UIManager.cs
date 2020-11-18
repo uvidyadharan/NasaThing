@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     private bool mapShown = false;
     private bool slopeMapShown = true;
     private bool heightMapShown = true;
+    private bool UIShown = true;
 
     public DefaultControl controls;
 
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
         controls = new DefaultControl();
         controls.Enable();
         controls.UI.MapShow.performed += shmp => ShowMap();
+        controls.UI.UIHide.performed += hide => HideUI();
         
         mapView.localScale = hidden;
         blurLayer.localScale = hidden;
@@ -47,6 +49,18 @@ public class UIManager : MonoBehaviour
         heightMapProjector.orthographic = false;
         HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
         HMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
+    }
+
+    void HideUI() {
+        if(UIShown) {
+            transform.localScale = new Vector3(0, 0, 0);
+            UIShown = false;
+        }
+        else {
+            transform.localScale = new Vector3(1, 1, 1);
+            UIShown = true;
+        }
+
     }
 
     public void SlopeMapToggle() {
