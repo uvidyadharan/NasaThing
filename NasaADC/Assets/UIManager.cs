@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject rover;
     public Projector heightMapProjector;
     public Projector slopeMapProjector;
+    public RawImage HMToggle;
+    public RawImage SMToggle;
     
     private bool mapShown = false;
     private bool slopeMapShown = true;
@@ -38,10 +41,15 @@ public class UIManager : MonoBehaviour
         if (slopeMapShown) {
             slopeMapShown = false;
             slopeMapProjector.orthographic = false;
+            SMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
         }
         else {
+            if (heightMapShown) {
+                HeightMapToggle();
+            }
             slopeMapShown = true;
             slopeMapProjector.orthographic = true;
+            SMToggle.color = new Color(0.185f, 1f, 0f, 1f);
         }
     }
 
@@ -49,10 +57,15 @@ public class UIManager : MonoBehaviour
         if (heightMapShown) {
             heightMapShown = false;
             heightMapProjector.orthographic = false;
+            HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
         }
         else {
+            if (slopeMapShown = true) {
+                SlopeMapToggle();
+            }
             heightMapShown = true;
             heightMapProjector.orthographic = true;
+            HMToggle.color = new Color(0.185f, 1f, 0f, 1f);
         }
     }
 
