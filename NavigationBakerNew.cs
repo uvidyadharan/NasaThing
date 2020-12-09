@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//testing git
 public class NavigationBakerNew : MonoBehaviour
 {
     public NavMeshSurface surface;
