@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//starting location - x=1737400f*cos(-89.232)*cos(54.794)=13425.7385, y=1737400f*cos(-89.232)*sin(54.794), z=1737400f*sin(-89.232)
+//destination - x=1737400f*cos(-89.200)*cos(120.690), y=1737400f*cos(-89.200)*sin(120.690), z=1737400f*sin(-89.200)
 public class AgentMove : MonoBehaviour
 {
     [SerializeField]
@@ -30,7 +31,7 @@ public class AgentMove : MonoBehaviour
         tr.time = 100;
         baker.bakeMesh(AgentType);
         //setupTrail();
-        this.GetComponent<MeshRenderer>().enabled = false;
+       // this.GetComponent<MeshRenderer>().enabled = false;
         resetDist();
         origPosition = transform.position;
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -65,8 +66,34 @@ public class AgentMove : MonoBehaviour
             {
 
                 //Vector3 closest = findLowestSlopePoint(transform.position, 3);
+                float x = transform.position.x;
+                float y = transform.position.y - -1731707;
+                float z = transform.position.z;
+                float height;
+                if (x < 0f && y < 0f && z < 0f)
+                {
+                    height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
+                    
+                }
+                else
+                {
+                    height = -1f * Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
+                }
+                if (x < 0f)
+                {
+                    height = height * -1f;
+                }
 
-                Debug.Log("Checkpoint at: " + transform.position);
+                //Debug.Log(height);
+                float lat = (Mathf.Asin(z / (height + 1737400f)));
+                float lon = (Mathf.Acos(y / ((height + 1737400f) * Mathf.Cos(lat))));
+                float aziumuth = Mathf.Atan2(Mathf.Sin(-lon), ((Mathf.Cos(lat) * 0) - (Mathf.Sin(lat) * 1 * Mathf.Cos(-lon))));
+                float rangeAb = Mathf.Pow((361000000f - x) * (361000000f - x) + y * y + (-42100000f - z) * (-42100000f - z), .5f);
+                float rz = (361000000f - x) * Mathf.Cos(lat) * Mathf.Cos(lon) + y * Mathf.Cos(lat) * Mathf.Sin(lon) + (-42100000f - z) * Mathf.Sin(lat);
+                float elev = Mathf.Asin(rz / rangeAb);
+                lon += -90;
+                lat += 54.794f;
+                Debug.Log("Checkpoint at: " + transform.position+"\tAzimuth: "+aziumuth+"\tElev: "+elev);
                 checkpoints.Add(transform.position);
                 resetDist();
             }
@@ -93,6 +120,7 @@ public class AgentMove : MonoBehaviour
             Debug.Log("DBC: " + distBetCheckpoints);
             resetDist();
             Debug.Log("Orig: "+origPosition);
+
             isReturn = true;
             this.transform.position = origPosition;
             this.transform.localPosition = origPosition;
