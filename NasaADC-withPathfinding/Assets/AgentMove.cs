@@ -28,7 +28,7 @@ public class AgentMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tr.time = 100;
+        tr.time = 0;
         baker.bakeMesh(AgentType);
         //setupTrail();
        // this.GetComponent<MeshRenderer>().enabled = false;
