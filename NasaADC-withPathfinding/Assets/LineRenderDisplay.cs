@@ -10,7 +10,7 @@ public class LineRenderDisplay : MonoBehaviour
     public Vector3[] checkpointsFlat;
    public CreateObject ObjectCreator;
     public LineRenderer lr;
-
+    public Terrain theTerrain;
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +21,26 @@ public class LineRenderDisplay : MonoBehaviour
     }
     public void showPath(string optim)
     {
+        int ctr = 1;
         switch(optim)
         {
             case "flat":
 
                 Debug.Log("flat checkpoints");
-
+                lr.positionCount = 11;
+                lr.numCornerVertices = 20;
+                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                ctr = 1;
                 foreach (Vector3 loc in checkpointsFlat)
                 {
-                    float x = loc.x;
-                    float y = loc.y - -1731707;
-                    float z = loc.z;
+                    float CorrectY = theTerrain.SampleHeight(loc);
+                    Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x, CorrectY+10, loc.z);
+                    float x = finalLoc.x;
+                    float y = finalLoc.y - -1731707;
+                    float z = finalLoc.z;
                     float height;
+                    lr.SetPosition(ctr, trailLoc);
                     if (x < 0f && y < 0f && z < 0f)
                     {
                         height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
@@ -56,22 +64,26 @@ public class LineRenderDisplay : MonoBehaviour
                     float elev = Mathf.Asin(rz / rangeAb);
                     lon += -90;
                     lat += 54.794f;
-                    ObjectCreator.createInstance(loc, aziumuth, elev);
-                }
-                
-                lr.positionCount = 10;
-                lr.SetPositions(checkpointsFlat);
-                
+                    ObjectCreator.createInstance(finalLoc, aziumuth, elev);
+                    ctr++;
+                }          
                 break;
             case "dist":
-
                 Debug.Log("dist checkpoints");
+                lr.positionCount = 11;
+                lr.numCornerVertices = 5;
+                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                ctr = 1;
                 foreach (Vector3 loc in checkpointsDist)
                 {
-                    float x = loc.x;
-                    float y = loc.y - -1731707;
-                    float z = loc.z;
+                    float CorrectY = theTerrain.SampleHeight(loc);
+                    Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x, CorrectY + 10, loc.z);
+                    float x = finalLoc.x;
+                    float y = finalLoc.y - -1731707;
+                    float z = finalLoc.z;
                     float height;
+                    lr.SetPosition(ctr, trailLoc);
                     if (x < 0f && y < 0f && z < 0f)
                     {
                         height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
@@ -95,10 +107,9 @@ public class LineRenderDisplay : MonoBehaviour
                     float elev = Mathf.Asin(rz / rangeAb);
                     lon += -90;
                     lat += 54.794f;
-                    ObjectCreator.createInstance(loc, aziumuth, elev);
+                    ObjectCreator.createInstance(finalLoc, aziumuth, elev);
+                    ctr++;
                 }
-                lr.positionCount = 10;
-                lr.SetPositions(checkpointsDist);
                 break;
 
         }

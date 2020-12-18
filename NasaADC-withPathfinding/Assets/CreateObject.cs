@@ -8,6 +8,7 @@ public class CreateObject : MonoBehaviour
     public MeshRenderer mesh1;
     public MeshRenderer mesh2;
     public GameObject self;
+
     void Start()
     {
 
@@ -20,7 +21,6 @@ public class CreateObject : MonoBehaviour
 
     public void createInstance(Vector3 location, float azi, float elev)
     {
-        
         Instantiate(this, location, Quaternion.identity);
         mesh1.enabled = true;
         mesh2.enabled = true;
