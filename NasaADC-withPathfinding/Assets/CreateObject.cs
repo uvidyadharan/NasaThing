@@ -9,6 +9,7 @@ public class CreateObject : MonoBehaviour
     public MeshRenderer mesh2;
     public GameObject self;
     public Terrain terrain;
+    public TextMesh tm;
     void Start()
     {
 
@@ -21,6 +22,7 @@ public class CreateObject : MonoBehaviour
 
     public void createInstance(Vector3 location, float azi, float elev)
     {
+        tm.text = "Azimuth: " + azi + "\nElevation: " + elev;
         float yDisplace = ((this.GetComponent<Renderer>().bounds.size.y) / 2); // get height of object so it doesn't spawn half-buried
         Vector3 placeAt = new Vector3(location.x, location.y-2, location.z); // determine where to place it
         var obj = Instantiate(this, placeAt, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up)); // create the object
@@ -30,6 +32,9 @@ public class CreateObject : MonoBehaviour
         {
             obj.transform.rotation = Quaternion.FromToRotation(obj.transform.up, hit.normal) * obj.transform.rotation; // adjust for slopes
         }
+        Vector3 textLoc = new Vector3(location.x-15, location.y + 25, location.z);
+        
+
         /*Instantiate(this, location, Quaternion.identity);
          mesh1.enabled = true;
          mesh2.enabled = true;*/
