@@ -29,13 +29,15 @@ public class LineRenderDisplay : MonoBehaviour
                 Debug.Log("flat checkpoints");
                 lr.positionCount = 11;
                 //lr.numCornerVertices = 20;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                // lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                lr.SetPosition(0, new Vector3(-7770.566f, 0f, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsFlat)
                 {
                     float CorrectY = theTerrain.SampleHeight(loc);
                     Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
-                    Vector3 trailLoc = new Vector3(loc.x-30, CorrectY+10, loc.z);
+                    //Vector3 trailLoc = new Vector3(loc.x-30, CorrectY+10, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x - 30,0f, loc.z);
                     float x = finalLoc.x;
                     float y = finalLoc.y - -1731707;
                     float z = finalLoc.z;
@@ -72,13 +74,15 @@ public class LineRenderDisplay : MonoBehaviour
                 Debug.Log("dist checkpoints");
                 lr.positionCount = 11;
                 //lr.numCornerVertices = 5;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                // lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                lr.SetPosition(0, new Vector3(-7770.566f, 0f, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsDist)
                 {
                     float CorrectY = theTerrain.SampleHeight(loc);
                     Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
-                    Vector3 trailLoc = new Vector3(loc.x-30, CorrectY + 10, loc.z);
+                    //Vector3 trailLoc = new Vector3(loc.x-30, CorrectY+10, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x - 30, 0f, loc.z);
                     float x = finalLoc.x;
                     float y = finalLoc.y - -1731707;
                     float z = finalLoc.z;
