@@ -9,9 +9,11 @@ public class LineRenderDisplay : MonoBehaviour
     public Vector3[] checkpointsDist;
     public Vector3[] checkpointsFlat;
    public CreateObject ObjectCreator;
+    public setMaterial ProjSetter;
     public LineRenderer lr;
     public Terrain theTerrain;
-
+    public float moveDown;
+    public RenderTexture rt;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +28,17 @@ public class LineRenderDisplay : MonoBehaviour
         switch(optim)
         {
             case "flat":
-
+                ProjSetter.setProjMat(false);
                 Debug.Log("flat checkpoints");
                 lr.positionCount = 11;
                 //lr.numCornerVertices = 20;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsFlat)
                 {
                     float CorrectY = theTerrain.SampleHeight(loc);
                     Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
-                    Vector3 trailLoc = new Vector3(loc.x-30, CorrectY+5, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x-120, CorrectY-moveDown, loc.z);
                     float x = finalLoc.x;
                     float y = finalLoc.y - -1731707;
                     float z = finalLoc.z;
@@ -67,19 +69,21 @@ public class LineRenderDisplay : MonoBehaviour
                     lat += 54.794f;
                     ObjectCreator.createInstance(finalLoc, aziumuth, elev);
                     ctr++;
-                }          
+                }
+               // ImageSaver.setProj(rt);
                 break;
             case "dist":
+                ProjSetter.setProjMat(true);
                 Debug.Log("dist checkpoints");
                 lr.positionCount = 11;
                 //lr.numCornerVertices = 5;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f, 11000.91f));
+                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsDist)
                 {
                     float CorrectY = theTerrain.SampleHeight(loc);
                     Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
-                    Vector3 trailLoc = new Vector3(loc.x-30, CorrectY + 10, loc.z);
+                    Vector3 trailLoc = new Vector3(loc.x-30, CorrectY-moveDown, loc.z);
                     float x = finalLoc.x;
                     float y = finalLoc.y - -1731707;
                     float z = finalLoc.z;
