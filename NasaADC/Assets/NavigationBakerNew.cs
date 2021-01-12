@@ -11,18 +11,14 @@ public class NavigationBakerNew : MonoBehaviour
     void Start()
     {
         //bakeMesh(AgentType);
+        Debug.Log(GetComponentInChildren<Terrain>().terrainData.size);
     }
     public void bakeMesh(string agent)
     {
         //short distance ID is -1372625422
         //flatLand ID is 0
         //no clue why
-        if (agent == "ret")
-        {
-            surface.agentTypeID = -334000983;
-            Debug.Log("Returning");
-        }
-        else if (agent == "dist")
+        if (agent == "dist")
         {
             surface.agentTypeID = -1372625422;
             Debug.Log("Going shortest distance");
