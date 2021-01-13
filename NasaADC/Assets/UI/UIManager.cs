@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -13,8 +14,8 @@ public class UIManager : MonoBehaviour
     public Transform mapView;
     public Transform blurLayer;
     public GameObject rover;
-    public Projector heightMapProjector;
-    public Projector slopeMapProjector;
+    public DecalProjector heightMapProjector;
+    public DecalProjector slopeMapProjector;
     public RawImage HMToggle;
     public RawImage SMToggle;
 
@@ -41,12 +42,12 @@ public class UIManager : MonoBehaviour
         mapShown = false;
 
         slopeMapShown = false;
-        slopeMapProjector.orthographic = false;
+        slopeMapProjector.fadeFactor = 0f;
         SMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
         SMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
 
         heightMapShown = false;
-        heightMapProjector.orthographic = false;
+        heightMapProjector.fadeFactor = 0f;
         HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
         HMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
     }
@@ -66,7 +67,7 @@ public class UIManager : MonoBehaviour
     public void SlopeMapToggle() {
         if (slopeMapShown) {
             slopeMapShown = false;
-            slopeMapProjector.orthographic = false;
+            slopeMapProjector.fadeFactor = 0f;
             SMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
             SMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
 
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
                 HeightMapToggle();
             }
             slopeMapShown = true;
-            slopeMapProjector.orthographic = true;
+            slopeMapProjector.fadeFactor = 1f;
             SMToggle.color = new Color(0.185f, 1f, 0f, 1f);
             SMToggleMap.color = new Color(0.185f, 1f, 0f, 1f);
 
@@ -87,7 +88,7 @@ public class UIManager : MonoBehaviour
         Debug.Log(heightMapShown);
         if (heightMapShown) {
             heightMapShown = false;
-            heightMapProjector.orthographic = false;
+            heightMapProjector.fadeFactor = 0f;
             HMToggle.color = new Color(0.3f, 0.3f, 0.3f,1f);
             HMToggleMap.color = new Color(0.3f, 0.3f, 0.3f,1f);
         }
@@ -96,7 +97,7 @@ public class UIManager : MonoBehaviour
                 SlopeMapToggle();
             }
             heightMapShown = true;
-            heightMapProjector.orthographic = true;
+            heightMapProjector.fadeFactor = 1f;
             HMToggle.color = new Color(0.185f, 1f, 0f, 1f);
             HMToggleMap.color = new Color(0.185f, 1f, 0f, 1f);
         }

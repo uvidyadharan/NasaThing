@@ -71,7 +71,7 @@ public class MapCameraControl : MonoBehaviour
         camPosition.z += controlDirY * (camPosition.y - moonSurface.SampleHeight(camPosition)) * mapSenseY;
 
         mapCamera.farClipPlane = camPosition.y + 4000;
-        mapCamera.nearClipPlane = Mathf.Max(1f, camPosition.y - 10000);
+        // mapCamera.nearClipPlane = Mathf.Max(1f, camPosition.y - 20000);
         mapCamera.orthographicSize = (transform.position.y - moonSurface.SampleHeight(camPosition)) / Mathf.Sqrt(3);
 
         moonSurface.basemapDistance = Mathf.Max(camPosition.y + 1000);
