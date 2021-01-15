@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LineRenderDisplay : MonoBehaviour
 {
+    //REFACTORED 1/15/2021 SAM
     public Transform dest;
     public string AgentType;
     public Vector3[] checkpointsDist;
     public Vector3[] checkpointsFlat;
-   public CreateObject ObjectCreator;
+    public CreateObject ObjectCreator;
     public setMaterial ProjSetter;
     public LineRenderer lr;
     public Terrain theTerrain;
