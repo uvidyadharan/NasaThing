@@ -20,12 +20,12 @@ public class CreateObject : MonoBehaviour
         // mod2.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    public void createInstance(Vector3 location, float azi, float elev)
+    public void createInstance(Vector3 location, float azi, float elev, Transform parent)
     {
         tm.text = "Azimuth: " + azi + "\nElevation: " + elev;
         float yDisplace = ((this.GetComponent<Renderer>().bounds.size.y) / 2); // get height of object so it doesn't spawn half-buried
         Vector3 placeAt = new Vector3(location.x, location.y-0.7f, location.z); // determine where to place it
-        var obj = Instantiate(this, placeAt, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up)); // create the object
+        var obj = Instantiate(this, placeAt, Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up), parent); // create the object
         RaycastHit hit;
         var ray = new Ray(obj.transform.position, Vector3.down); // check for slopes
         if (terrain.GetComponent<Collider>().Raycast(ray, out hit, 1000))

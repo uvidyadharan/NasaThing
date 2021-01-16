@@ -6,6 +6,9 @@ public class LineRenderDisplay : MonoBehaviour
 {
     //REFACTORED 1/15/2021 SAM
     public Transform dest;
+
+    public Transform checkpointParent;
+        
     public string AgentType;
     public Vector3[] checkpointsDist;
     public Vector3[] checkpointsFlat;
@@ -16,7 +19,7 @@ public class LineRenderDisplay : MonoBehaviour
     public float moveDown;
     public RenderTexture rt;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //Debug.Log(theTerrain.terrainData.bounds);
         showPath(AgentType);
@@ -68,7 +71,7 @@ public class LineRenderDisplay : MonoBehaviour
                     float elev = Mathf.Asin(rz / rangeAb);
                     lon += -90;
                     lat += 54.794f;
-                    ObjectCreator.createInstance(finalLoc, aziumuth, elev);
+                    ObjectCreator.createInstance(finalLoc, aziumuth, elev, checkpointParent);
                     ctr++;
                 }
                // ImageSaver.setProj(rt);
@@ -113,7 +116,7 @@ public class LineRenderDisplay : MonoBehaviour
                     float elev = Mathf.Asin(rz / rangeAb);
                     lon += -90;
                     lat += 54.794f;
-                    ObjectCreator.createInstance(finalLoc, aziumuth, elev);
+                    ObjectCreator.createInstance(finalLoc, aziumuth, elev, checkpointParent);
                     ctr++;
                 }
                 break;
