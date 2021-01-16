@@ -70,7 +70,6 @@ public class SplineManager : MonoBehaviour
             }
             
         }
-        RotatePoints();
     }
 
 
@@ -100,11 +99,14 @@ public class SplineManager : MonoBehaviour
 
     private void RotatePoints()
     {
-        print(_splinePoints.Count);
-        print(pointContainer.childCount);
-        Vector2 vDiff = (Vector2) MathC.FlipYZ(endingPoint.position) - _splinePoints[numPoints-1];
-        float atan2 = Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg;
-        pointContainer.GetChild(numPoints-1).rotation = Quaternion.Euler(90, atan2, 0);
+        print("rotate");
+        // print(_splinePoints.Count);
+        // print(pointContainer.childCount);
+        // Vector2 vDiff = (Vector2) MathC.FlipYZ(endingPoint.position) - _splinePoints[numPoints-1];
+        // float atan2 = Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg;
+        // pointContainer.GetChild(numPoints-1).rotation = Quaternion.Euler(90, atan2, 0);
+        Vector2 vDiff;
+        float atan2;
         
         for (int i = numPoints - 2; i >= 0; i--)
         {
@@ -119,6 +121,7 @@ public class SplineManager : MonoBehaviour
         _coroutinePermission[startIndex] = false;
         Vector2 pos;
         float _timeElapsed;
+        Vector2 vDiff;
 
         
         for (int i = startIndex; i < _splinePoints.Count-1; i++)
@@ -134,6 +137,9 @@ public class SplineManager : MonoBehaviour
             }
             pos = _splinePoints[i + 1];
             arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
+            vDiff = MathC.FlipYZ(pointContainer.GetChild((startIndex + 1) % _splinePoints.Count).position) -
+                    MathC.FlipYZ(arrow.position);
+            arrow.rotation = Quaternion.Euler(90f, Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg, 0);
         }
 
         pos = _splinePoints[0];
@@ -143,12 +149,20 @@ public class SplineManager : MonoBehaviour
         {
             // Lerp between 2 points
             _timeElapsed = 0;
+            
             while (_timeElapsed < moveDuration)
             {
+                // Move position
                 pos = Vector2.Lerp(_splinePoints[i], _splinePoints[i + 1], _timeElapsed / moveDuration);
                 arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
                 _timeElapsed += Time.deltaTime;
                 yield return null;
+                
+                // Turn towards one before
+                vDiff = MathC.FlipYZ(pointContainer.GetChild((startIndex + 1) % _splinePoints.Count).position) -
+                        MathC.FlipYZ(arrow.position);
+                arrow.rotation = Quaternion.Euler(90f, Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg, 0);
+
             }
             pos = _splinePoints[i + 1];
         }
