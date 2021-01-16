@@ -9,21 +9,32 @@ public class SplineManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    // Path objects
     public Transform pointProjector;
     public Transform startingPoint;
     public Transform endingPoint;
-    public int pathResolution;
-
     public Transform pointContainer;
-    public Quaternion projectorAngle;
 
+    private Vector3 _staticStartPoint;
+    // Path parameters
+    public int pathResolution;
+    public Quaternion projectorAngle;
     public float projectorHeight;
 
+    private int numPoints;
+    
+    // Move point stuff
+    public float moveDuration;
+    
     private List<Vector2> _controlPoints = new List<Vector2>();
     private List<Vector2> _splinePoints = new List<Vector2>();
+    private List<bool> _coroutinePermission = new List<bool>();
 
     private void Start()
     {
+
+        _staticStartPoint = startingPoint.position;
+        
         // Add start point
         _controlPoints.Add(MathC.FlipYZ(startingPoint.position));
 
@@ -43,9 +54,25 @@ public class SplineManager : MonoBehaviour
             // Debug.Log(point);
             Instantiate(pointProjector, new Vector3(point.x, projectorHeight, point.y), projectorAngle,
                 pointContainer);
+            _coroutinePermission.Add(true);
+        }
+        numPoints = _splinePoints.Count;
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        for (int i = 0; i < _splinePoints.Count; i++)
+        {
+            if (_coroutinePermission[i])
+            {
+                StartCoroutine(MoveAlongPath(pointContainer.GetChild(i), i));
+            }
+            
         }
         RotatePoints();
     }
+
 
     public void BuildSpline()
     {
@@ -71,34 +98,60 @@ public class SplineManager : MonoBehaviour
         return Vector2.Distance(MathC.FlipYZ(p0), MathC.FlipYZ(p1));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-
     private void RotatePoints()
     {
-        int numPoints = _splinePoints.Count;
-        Vector2 vDiff = MathC.FlipYZ(endingPoint.position) - MathC.FlipYZ(pointContainer.GetChild(numPoints-1).position);
-        Debug.Log("rotate");
+        print(_splinePoints.Count);
+        print(pointContainer.childCount);
+        Vector2 vDiff = (Vector2) MathC.FlipYZ(endingPoint.position) - _splinePoints[numPoints-1];
         float atan2 = Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg;
         pointContainer.GetChild(numPoints-1).rotation = Quaternion.Euler(90, atan2, 0);
         
         for (int i = numPoints - 2; i >= 0; i--)
         {
-            vDiff = MathC.FlipYZ(pointContainer.GetChild(i+1).position) - MathC.FlipYZ(pointContainer.GetChild(i).position);
+            vDiff = _splinePoints[i+1] - _splinePoints[i];
             atan2 = Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg;
             pointContainer.GetChild(i).rotation = Quaternion.Euler(90, atan2, 0);
         }
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     foreach (Vector2 temp in _splinePoints)
-    //     {
-    //         Gizmos.DrawSphere(MathC.FlipYZ(temp), 0.3f);
-    //     }
-    //     
-    // }
+    private IEnumerator MoveAlongPath(Transform arrow, int startIndex)
+    {
+        _coroutinePermission[startIndex] = false;
+        Vector2 pos;
+        float _timeElapsed;
+
+        
+        for (int i = startIndex; i < _splinePoints.Count-1; i++)
+        {
+            // Lerp between 2 points
+            _timeElapsed = 0;
+            while (_timeElapsed < moveDuration)
+            {
+                pos = Vector2.Lerp(_splinePoints[i], _splinePoints[i + 1], _timeElapsed / moveDuration);
+                arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
+                _timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            pos = _splinePoints[i + 1];
+            arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
+        }
+
+        pos = _splinePoints[0];
+        arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
+        
+        for (int i = 0; i < startIndex-1; i++)
+        {
+            // Lerp between 2 points
+            _timeElapsed = 0;
+            while (_timeElapsed < moveDuration)
+            {
+                pos = Vector2.Lerp(_splinePoints[i], _splinePoints[i + 1], _timeElapsed / moveDuration);
+                arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
+                _timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            pos = _splinePoints[i + 1];
+        }
+        _coroutinePermission[startIndex] = true;
+    }
 }
