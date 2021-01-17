@@ -86,12 +86,12 @@ public class RoverControl : MonoBehaviour {
 
     private void HeadlightToggle() {
         if(headlights) {
-            headlightL.intensity = 0;
-            headlightR.intensity = 0;
+            headlightL.enabled = false;
+            headlightR.enabled = false;
         }
         else {
-            headlightL.intensity = 10;
-            headlightR.intensity = 10;
+            headlightL.enabled = true;
+            headlightR.enabled = true;
         }
         headlights = !headlights;
 

@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem.Switch;
 
 public class SplineManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     // Path objects
-    public Transform pointProjector;
+    public GameObject pointProjector;
+    public GameObject checkpointProjector;
+    public Transform columnContainer;
+    
     public Transform startingPoint;
     public Transform endingPoint;
     public Transform pointContainer;
@@ -20,11 +24,14 @@ public class SplineManager : MonoBehaviour
     public int pathResolution;
     public Quaternion projectorAngle;
     public float projectorHeight;
+    public float ringSpeed;
 
     private int numPoints;
     
     // Move point stuff
     public float moveDuration;
+
+    private List<bool> _checkpointsHit = new List<bool>();
     
     private List<Vector2> _controlPoints = new List<Vector2>();
     private List<Vector2> _splinePoints = new List<Vector2>();
@@ -42,6 +49,9 @@ public class SplineManager : MonoBehaviour
         foreach (Transform child in transform)
         {
             _controlPoints.Add(MathC.FlipYZ(child.position));
+            Instantiate(checkpointProjector, child.position + new Vector3(0, 500, 0),
+                Quaternion.Euler(Vector3.zero), columnContainer);
+            _checkpointsHit.Add(false);
         }
 
         // Add ending point
@@ -70,10 +80,11 @@ public class SplineManager : MonoBehaviour
             }
             
         }
+        ManageCheckpoints();
     }
 
 
-    public void BuildSpline()
+    private void BuildSpline()
     {
         float distance = Find2DDistance(startingPoint.position, transform.GetChild(0).position);
 
@@ -92,9 +103,23 @@ public class SplineManager : MonoBehaviour
             Mathf.RoundToInt(distance * pathResolution * 0.01f)));
     }
 
-    public float Find2DDistance(Vector3 p0, Vector3 p1)
+    private float Find2DDistance(Vector3 p0, Vector3 p1)
     {
         return Vector2.Distance(MathC.FlipYZ(p0), MathC.FlipYZ(p1));
+    }
+
+    private void ManageCheckpoints()
+    {
+        foreach (Transform child in columnContainer)
+        {
+            child.Rotate(Vector3.up, ringSpeed * 100 * Time.deltaTime);
+        }
+    }
+
+
+    public void ReportCheckpointHit(int checkpoint, bool isHit)
+    {
+        _checkpointsHit[checkpoint] = isHit;
     }
 
     private void RotatePoints()
