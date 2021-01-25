@@ -108,12 +108,12 @@ MonoBehaviour:
     max: 512
   m_VolumetricFogBudget:
     m_OverrideState: 0
-    m_Value: 0.25
+    m_Value: 0.33
     min: 0
     max: 1
   m_ResolutionDepthRatio:
     m_OverrideState: 0
-    m_Value: 0.5
+    m_Value: 0.666
     min: 0
     max: 1
   directionalLightsOnly:
@@ -196,7 +196,7 @@ MonoBehaviour:
     m_Value: 2
   sphericalMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   seaLevel:
     m_OverrideState: 1
     m_Value: 13494
@@ -206,7 +206,7 @@ MonoBehaviour:
     min: 0
   planetCenterPosition:
     m_OverrideState: 1
-    m_Value: {x: 1, y: -1723.6, z: 3}
+    m_Value: {x: 0, y: 0, z: 0}
   airDensityR:
     m_OverrideState: 0
     m_Value: 0.04534
@@ -281,7 +281,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   spaceEmissionMultiplier:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
     min: 0
   spaceRotation:
     m_OverrideState: 1

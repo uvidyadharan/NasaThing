@@ -1,0 +1,572 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="NONE,NOARCHIVE" />
+  <title>&lt;class &#39;json.decoder.JSONDecodeError&#39;&gt; at /get_position</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    table {
+        border:1px solid #ccc; border-collapse: collapse; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th {
+        padding:1px 6px 1px 3px; background:#fefefe; text-align:left;
+        font-weight:normal; font-size:11px; border:1px solid #ddd; }
+    tbody th { text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%;}
+    table td.code div { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td {
+        font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; }
+    ul.traceback li.frame { margin-bottom:1em; }
+    div.context { margin: 10px 0; }
+    div.context ol {
+        padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li {
+        font-family:monospace; white-space:pre; color:#666; cursor:pointer; }
+    div.context ol.context-line li { color:black; background-color:#ccc; }
+    div.context ol.context-line li span { float: right; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:black; text-decoration:none; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 0 20px; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+  </style>
+  <script type="text/javascript">
+  //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+        // Written by Jonathan Snook, http://www.snook.ca/jon;
+        // Add-ons by Robert Nyman, http://www.robertnyman.com
+        var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+        var arrReturnElements = new Array();
+        strClassName = strClassName.replace(/\-/g, "\-");
+        var oRegExp = new RegExp("(^|\s)" + strClassName + "(\s|$)");
+        var oElement;
+        for(var i=0; i<arrElements.length; i++){
+            oElement = arrElements[i];
+            if(oRegExp.test(oElement.className)){
+                arrReturnElements.push(oElement);
+            }
+        }
+        return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block' : 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.innerHTML = s.innerHTML == uarr ? darr : uarr;
+      return false;
+    }
+    //-->
+  </script>
+</head>
+<body>
+
+<div id="summary">
+  <h1>&lt;class &#39;json.decoder.JSONDecodeError&#39;&gt; at /get_position</h1>
+  <h2>Expecting value: line 1 column 1 (char 0)</h2>
+  <table><tr>
+    <th>Python</th>
+    <td>/usr/lib/python3.8/json/decoder.py in raw_decode, line 354</td>
+  </tr><tr>
+    <th>Web</th>
+    <td>POST http://52.186.47.67/get_position</td>
+  </tr></table>
+</div>
+<div id="traceback">
+<h2>Traceback <span>(innermost first)</span></h2>
+<ul class="traceback">
+<li class="frame">
+<code>/usr/lib/python3.8/json/decoder.py</code> in <code>raw_decode</code>
+<div class="context" id="c140146938941824">
+<ol start="347" class="pre-context" id="pre140146938941824">
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        This can be used to decode a JSON document from a string that may</li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        have extraneous data at the end.</li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')"></li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        &quot;&quot;&quot;</li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        try:</li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">            obj, end = self.scan_once(s, idx)</li>
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        except StopIteration as err:</li>
+</ol>
+<ol start="354" class="context-line"><li onclick="toggle('pre140146938941824', 'post140146938941824')">            raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None <span>...</span></li></ol>
+<ol start='355' class="post-context" id="post140146938941824">
+<li onclick="toggle('pre140146938941824', 'post140146938941824')">        return obj, end</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938941824')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938941824"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>idx</td><td class="code"><div>0</div></td></tr>
+<tr><td>s</td><td class="code"><div>&#39;key=TRUMP2020&#39;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;json.decoder.JSONDecoder object at 0x7f768671e6a0&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/lib/python3.8/json/decoder.py</code> in <code>decode</code>
+<div class="context" id="c140146938941888">
+<ol start="329" class="pre-context" id="pre140146938941888">
+<li onclick="toggle('pre140146938941888', 'post140146938941888')"></li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')"></li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">    def decode(self, s, _w=WHITESPACE.match):</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        &quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        containing a JSON document).</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')"></li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        &quot;&quot;&quot;</li>
+</ol>
+<ol start="336" class="context-line"><li onclick="toggle('pre140146938941888', 'post140146938941888')">        obj, end = self.raw_decode(s, idx=_w(s, 0).end()) <span>...</span></li></ol>
+<ol start='337' class="post-context" id="post140146938941888">
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        end = _w(s, end).end()</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        if end != len(s):</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">            raise JSONDecodeError(&quot;Extra data&quot;, s, end)</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">        return obj</li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')"></li>
+<li onclick="toggle('pre140146938941888', 'post140146938941888')">    def raw_decode(self, s, idx=0):</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938941888')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938941888"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>_w</td><td class="code"><div>&lt;built-in method match of re.Pattern object at 0x7f7680fa41b0&gt;</div></td></tr>
+<tr><td>s</td><td class="code"><div>&#39;key=TRUMP2020&#39;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;json.decoder.JSONDecoder object at 0x7f768671e6a0&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/lib/python3.8/json/__init__.py</code> in <code>loads</code>
+<div class="context" id="c140146938941952">
+<ol start="349" class="pre-context" id="pre140146938941952">
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">            stacklevel=2</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">        )</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">        del kw[&#39;encoding&#39;]</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')"></li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">    if (cls is None and object_hook is None and</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">            parse_int is None and parse_float is None and</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">            parse_constant is None and object_pairs_hook is None and not kw):</li>
+</ol>
+<ol start="356" class="context-line"><li onclick="toggle('pre140146938941952', 'post140146938941952')">        return _default_decoder.decode(s) <span>...</span></li></ol>
+<ol start='357' class="post-context" id="post140146938941952">
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">    if cls is None:</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">        cls = JSONDecoder</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">    if object_hook is not None:</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">        kw[&#39;object_hook&#39;] = object_hook</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">    if object_pairs_hook is not None:</li>
+<li onclick="toggle('pre140146938941952', 'post140146938941952')">        kw[&#39;object_pairs_hook&#39;] = object_pairs_hook</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938941952')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938941952"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>cls</td><td class="code"><div>None</div></td></tr>
+<tr><td>kw</td><td class="code"><div>{}</div></td></tr>
+<tr><td>object_hook</td><td class="code"><div>None</div></td></tr>
+<tr><td>object_pairs_hook</td><td class="code"><div>None</div></td></tr>
+<tr><td>parse_constant</td><td class="code"><div>None</div></td></tr>
+<tr><td>parse_float</td><td class="code"><div>None</div></td></tr>
+<tr><td>parse_int</td><td class="code"><div>None</div></td></tr>
+<tr><td>s</td><td class="code"><div>&#39;key=TRUMP2020&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>server.py</code> in <code>POST</code>
+<div class="context" id="c140146938942016">
+<ol start="5" class="pre-context" id="pre140146938942016">
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">from dotenv import load_dotenv</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">import os</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')"></li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">load_dotenv()</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')"></li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">class Position:</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">    def POST(self):</li>
+</ol>
+<ol start="12" class="context-line"><li onclick="toggle('pre140146938942016', 'post140146938942016')">        key = json.loads(web.data().decode(&quot;UTF-8&quot;))[&quot;key&quot;] <span>...</span></li></ol>
+<ol start='13' class="post-context" id="post140146938942016">
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">        if key == os.getenv(&quot;KEY&quot;):</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">            ts = load.timescale()</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">            t = ts.now()</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">            planets = load(&#39;de421.bsp&#39;)</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">            earth = planets[&#39;earth&#39;]</li>
+<li onclick="toggle('pre140146938942016', 'post140146938942016')">            moon = planets[&quot;moon&quot;]</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938942016')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938942016"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>self</td><td class="code"><div>&lt;__main__.Position object at 0x7f768082c160&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python3.8/dist-packages/web/application.py</code> in <code>handle_class</code>
+<div class="context" id="c140146938942080">
+<ol start="487" class="pre-context" id="pre140146938942080">
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">        def handle_class(cls):</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            meth = web.ctx.method</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            if meth == &quot;HEAD&quot; and not hasattr(cls, meth):</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">                meth = &quot;GET&quot;</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            if not hasattr(cls, meth):</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">                raise web.nomethod(cls)</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            tocall = getattr(cls(), meth)</li>
+</ol>
+<ol start="494" class="context-line"><li onclick="toggle('pre140146938942080', 'post140146938942080')">            return tocall(*args) <span>...</span></li></ol>
+<ol start='495' class="post-context" id="post140146938942080">
+<li onclick="toggle('pre140146938942080', 'post140146938942080')"></li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">        if f is None:</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            raise web.notfound()</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">        elif isinstance(f, application):</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">            return f.handle_with_processors()</li>
+<li onclick="toggle('pre140146938942080', 'post140146938942080')">        elif isclass(f):</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938942080')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938942080"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>cls</td><td class="code"><div>&lt;class &#39;__main__.Position&#39;&gt;</div></td></tr>
+<tr><td>meth</td><td class="code"><div>&#39;POST&#39;</div></td></tr>
+<tr><td>tocall</td><td class="code"><div>&lt;bound method Position.POST of &lt;__main__.Position object at 0x7f768082c160&gt;&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python3.8/dist-packages/web/application.py</code> in <code>_delegate</code>
+<div class="context" id="c140146938942144">
+<ol start="509" class="pre-context" id="pre140146938942144">
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">                raise web.redirect(url)</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">            elif &quot;.&quot; in f:</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">                mod, cls = f.rsplit(&quot;.&quot;, 1)</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">                mod = __import__(mod, None, None, [&quot;&quot;])</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">                cls = getattr(mod, cls)</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">            else:</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">                cls = fvars[f]</li>
+</ol>
+<ol start="516" class="context-line"><li onclick="toggle('pre140146938942144', 'post140146938942144')">            return handle_class(cls) <span>...</span></li></ol>
+<ol start='517' class="post-context" id="post140146938942144">
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">        elif hasattr(f, &quot;__call__&quot;):</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">            return f()</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">        else:</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">            return web.notfound()</li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')"></li>
+<li onclick="toggle('pre140146938942144', 'post140146938942144')">    def _match(self, mapping, value):</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938942144')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938942144"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>cls</td><td class="code"><div>&lt;class &#39;__main__.Position&#39;&gt;</div></td></tr>
+<tr><td>f</td><td class="code"><div>&#39;Position&#39;</div></td></tr>
+<tr><td>fvars</td><td class="code"><div>{&#39;Forbidden&#39;: &lt;class &#39;web.webapi.Forbidden&#39;&gt;,
+ &#39;N&#39;: 1.0,
+ &#39;Position&#39;: &lt;class &#39;__main__.Position&#39;&gt;,
+ &#39;W&#39;: -1.0,
+ &#39;__annotations__&#39;: {},
+ &#39;__builtins__&#39;: &lt;module &#39;builtins&#39; (built-in)&gt;,
+ &#39;__cached__&#39;: None,
+ &#39;__doc__&#39;: None,
+ &#39;__file__&#39;: &#39;server.py&#39;,
+ &#39;__loader__&#39;: &lt;_frozen_importlib_external.SourceFileLoader object at 0x7f76869d6220&gt;,
+ &#39;__name__&#39;: &#39;__main__&#39;,
+ &#39;__package__&#39;: None,
+ &#39;__spec__&#39;: None,
+ &#39;app&#39;: &lt;web.application.application object at 0x7f76869002e0&gt;,
+ &#39;json&#39;: &lt;module &#39;json&#39; from &#39;/usr/lib/python3.8/json/__init__.py&#39;&gt;,
+ &#39;load&#39;: &lt;skyfield.iokit.Loader object at 0x7f7685f81310&gt;,
+ &#39;load_dotenv&#39;: &lt;function load_dotenv at 0x7f7680b229d0&gt;,
+ &#39;math&#39;: &lt;module &#39;math&#39; (built-in)&gt;,
+ &#39;os&#39;: &lt;module &#39;os&#39; from &#39;/usr/lib/python3.8/os.py&#39;&gt;,
+ &#39;urls&#39;: (&#39;/get_position&#39;, &#39;Position&#39;),
+ &#39;web&#39;: &lt;module &#39;web&#39; from &#39;/usr/local/lib/python3.8/dist-packages/web/__init__.py&#39;&gt;,
+ &#39;wgs84&#39;: &lt;skyfield.toposlib.Geoid object at 0x7f7680f95ee0&gt;}</div></td></tr>
+<tr><td>handle_class</td><td class="code"><div>&lt;function application._delegate.&lt;locals&gt;.handle_class at 0x7f768081da60&gt;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application object at 0x7f76869002e0&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python3.8/dist-packages/web/application.py</code> in <code>handle</code>
+<div class="context" id="c140146938942208">
+<ol start="263" class="pre-context" id="pre140146938942208">
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">        return response</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')"></li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">    def browser(self):</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">        return browser.AppBrowser(self)</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')"></li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">    def handle(self):</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">        fn, args = self._match(self.mapping, web.ctx.path)</li>
+</ol>
+<ol start="270" class="context-line"><li onclick="toggle('pre140146938942208', 'post140146938942208')">        return self._delegate(fn, self.fvars, args) <span>...</span></li></ol>
+<ol start='271' class="post-context" id="post140146938942208">
+<li onclick="toggle('pre140146938942208', 'post140146938942208')"></li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">    def handle_with_processors(self):</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">        def process(processors):</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">            try:</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">                if processors:</li>
+<li onclick="toggle('pre140146938942208', 'post140146938942208')">                    p, processors = processors[0], processors[1:]</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938942208')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938942208"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>fn</td><td class="code"><div>&#39;Position&#39;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application object at 0x7f76869002e0&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python3.8/dist-packages/web/application.py</code> in <code>process</code>
+<div class="context" id="c140146938942272">
+<ol start="272" class="pre-context" id="pre140146938942272">
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">    def handle_with_processors(self):</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">        def process(processors):</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">            try:</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                if processors:</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                    p, processors = processors[0], processors[1:]</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                    return p(lambda: process(processors))</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                else:</li>
+</ol>
+<ol start="279" class="context-line"><li onclick="toggle('pre140146938942272', 'post140146938942272')">                    return self.handle() <span>...</span></li></ol>
+<ol start='280' class="post-context" id="post140146938942272">
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">            except web.HTTPError:</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                raise</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">            except (KeyboardInterrupt, SystemExit):</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                raise</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">            except:</li>
+<li onclick="toggle('pre140146938942272', 'post140146938942272')">                print(traceback.format_exc(), file=web.debug)</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '140146938942272')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v140146938942272"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>process</td><td class="code"><div>&lt;function application.handle_with_processors.&lt;locals&gt;.process at 0x7f768081d790&gt;</div></td></tr>
+<tr><td>processors</td><td class="code"><div>[]</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application object at 0x7f76869002e0&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+  </ul>
+</div>
+
+<div id="requestinfo">
+<h2>Request information</h2>
+
+<h3>INPUT</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>key</td><td class="code"><div>&#39;TRUMP2020&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="cookie-info">COOKIES</h3>
+
+<p>No data.</p>
+
+
+
+
+
+<h3 id="meta-info">META</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>app_stack</td><td class="code"><div>[&lt;web.application.application object at 0x7f76869002e0&gt;]</div></td></tr>
+<tr><td>data</td><td class="code"><div>b&#39;key=TRUMP2020&#39;</div></td></tr>
+<tr><td>fullpath</td><td class="code"><div>&#39;/get_position&#39;</div></td></tr>
+<tr><td>headers</td><td class="code"><div>[]</div></td></tr>
+<tr><td>home</td><td class="code"><div>&#39;http://52.186.47.67&#39;</div></td></tr>
+<tr><td>homedomain</td><td class="code"><div>&#39;http://52.186.47.67&#39;</div></td></tr>
+<tr><td>homepath</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>host</td><td class="code"><div>&#39;52.186.47.67&#39;</div></td></tr>
+<tr><td>ip</td><td class="code"><div>&#39;47.20.208.112&#39;</div></td></tr>
+<tr><td>method</td><td class="code"><div>&#39;POST&#39;</div></td></tr>
+<tr><td>output</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>path</td><td class="code"><div>&#39;/get_position&#39;</div></td></tr>
+<tr><td>protocol</td><td class="code"><div>&#39;http&#39;</div></td></tr>
+<tr><td>query</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>realhome</td><td class="code"><div>&#39;http://52.186.47.67&#39;</div></td></tr>
+<tr><td>status</td><td class="code"><div>&#39;200 OK&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="meta-info">ENVIRONMENT</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>ACTUAL_SERVER_PROTOCOL</td><td class="code"><div>&#39;HTTP/1.1&#39;</div></td></tr>
+<tr><td>CONTENT_LENGTH</td><td class="code"><div>&#39;13&#39;</div></td></tr>
+<tr><td>CONTENT_TYPE</td><td class="code"><div>&#39;application/x-www-form-urlencoded&#39;</div></td></tr>
+<tr><td>HTTP_ACCEPT</td><td class="code"><div>&#39;*/*&#39;</div></td></tr>
+<tr><td>HTTP_ACCEPT_ENCODING</td><td class="code"><div>&#39;gzip, deflate&#39;</div></td></tr>
+<tr><td>HTTP_CONNECTION</td><td class="code"><div>&#39;keep-alive&#39;</div></td></tr>
+<tr><td>HTTP_HOST</td><td class="code"><div>&#39;52.186.47.67&#39;</div></td></tr>
+<tr><td>HTTP_USER_AGENT</td><td class="code"><div>&#39;python-requests/2.25.1&#39;</div></td></tr>
+<tr><td>PATH_INFO</td><td class="code"><div>&#39;/get_position&#39;</div></td></tr>
+<tr><td>QUERY_STRING</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>REMOTE_ADDR</td><td class="code"><div>&#39;47.20.208.112&#39;</div></td></tr>
+<tr><td>REMOTE_PORT</td><td class="code"><div>&#39;63516&#39;</div></td></tr>
+<tr><td>REQUEST_METHOD</td><td class="code"><div>&#39;POST&#39;</div></td></tr>
+<tr><td>REQUEST_URI</td><td class="code"><div>&#39;/get_position&#39;</div></td></tr>
+<tr><td>SCRIPT_NAME</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>SERVER_NAME</td><td class="code"><div>&#39;localhost&#39;</div></td></tr>
+<tr><td>SERVER_PORT</td><td class="code"><div>&#39;80&#39;</div></td></tr>
+<tr><td>SERVER_PROTOCOL</td><td class="code"><div>&#39;HTTP/1.1&#39;</div></td></tr>
+<tr><td>SERVER_SOFTWARE</td><td class="code"><div>&#39;Cheroot/8.5.2 Server&#39;</div></td></tr>
+<tr><td>wsgi.errors</td><td class="code"><div>&lt;_io.TextIOWrapper name=&#39;&lt;stderr&gt;&#39; mode=&#39;w&#39; encoding=&#39;utf-8&#39;&gt;</div></td></tr>
+<tr><td>wsgi.input</td><td class="code"><div>&lt;cheroot.server.KnownLengthRFile object at 0x7f768081ef40&gt;</div></td></tr>
+<tr><td>wsgi.input_terminated</td><td class="code"><div>False</div></td></tr>
+<tr><td>wsgi.multiprocess</td><td class="code"><div>False</div></td></tr>
+<tr><td>wsgi.multithread</td><td class="code"><div>True</div></td></tr>
+<tr><td>wsgi.run_once</td><td class="code"><div>False</div></td></tr>
+<tr><td>wsgi.url_scheme</td><td class="code"><div>&#39;http&#39;</div></td></tr>
+<tr><td>wsgi.version</td><td class="code"><div>(1, 0)</div></td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+<div id="explanation">
+  <p>
+    You're seeing this error because you have <code>web.config.debug</code>
+    set to <code>True</code>. Set that to <code>False</code> if you don't want to see this.
+  </p>
+</div>
+
+</body>
+</html>
