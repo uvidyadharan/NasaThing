@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/DefaultControl.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/MoonRover/DefaultControl.inputactions'
 
 using System;
 using System.Collections;
