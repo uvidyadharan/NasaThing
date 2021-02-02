@@ -13,7 +13,7 @@ public class LineRenderDisplay : MonoBehaviour
     public Vector3[] checkpointsDist;
     public Vector3[] checkpointsFlat;
     public CreateObject ObjectCreator;
-    public setMaterial ProjSetter;
+    // public setMaterial ProjSetter;
     public LineRenderer lr;
     public Terrain theTerrain;
     public float moveDown;
@@ -32,37 +32,37 @@ public class LineRenderDisplay : MonoBehaviour
         switch(optim)
         {
             case "flat":
-                ProjSetter.setProjMat(false);
+                // ProjSetter.setProjMat(false);
                 Debug.Log("flat checkpoints");
                 lr.positionCount = 11;
-                //lr.numCornerVertices = 20;
+                lr.numCornerVertices = 20;
                 lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsFlat)
                 {
-                    float CorrectY = theTerrain.SampleHeight(loc);
-                    Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
-                    Vector3 trailLoc = new Vector3(loc.x-120, CorrectY-moveDown, loc.z);
-                    float x = finalLoc.x;
-                    float y = finalLoc.y - -1731707;
-                    float z = finalLoc.z;
-                    float height;
-                    lr.SetPosition(ctr, trailLoc);
-                    if (x < 0f && y < 0f && z < 0f)
-                    {
-                        height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
+                     float CorrectY = theTerrain.SampleHeight(loc);
+                     Vector3 finalLoc = new Vector3(loc.x, CorrectY, loc.z);
+                     Vector3 trailLoc = new Vector3(loc.x-120, CorrectY-moveDown, loc.z);
+                     float x = finalLoc.x;
+                     float y = finalLoc.y - -1731707;
+                     float z = finalLoc.z;
+                     float height;
+                     lr.SetPosition(ctr, trailLoc);
+                     if (x < 0f && y < 0f && z < 0f)
+                     {
+                         height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
+                    
+                     }
+                     else
+                     {
+                         height = -1f * Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
+                     }
+                     if (x < 0f)
+                     {
+                         height = height * -1f;
+                     }
 
-                    }
-                    else
-                    {
-                        height = -1f * Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
-                    }
-                    if (x < 0f)
-                    {
-                        height = height * -1f;
-                    }
-
-                    //Debug.Log(height);
+                    Debug.Log(height);
                     float lat = (Mathf.Asin(z / (height + 1737400f)));
                     float lon = (Mathf.Acos(y / ((height + 1737400f) * Mathf.Cos(lat))));
                     float aziumuth = Mathf.Atan2(Mathf.Sin(-lon), ((Mathf.Cos(lat) * 0) - (Mathf.Sin(lat) * 1 * Mathf.Cos(-lon))));
@@ -77,7 +77,7 @@ public class LineRenderDisplay : MonoBehaviour
                // ImageSaver.setProj(rt);
                 break;
             case "dist":
-                ProjSetter.setProjMat(true);
+                // ProjSetter.setProjMat(true);
                 Debug.Log("dist checkpoints");
                 lr.positionCount = 11;
                 //lr.numCornerVertices = 5;
