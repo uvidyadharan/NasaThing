@@ -14,12 +14,13 @@ public class SplineManager : MonoBehaviour
     public GameObject pointProjector;
     public GameObject checkpointProjector;
     public Transform columnContainer;
-    
+
     public Transform startingPoint;
     public Transform endingPoint;
     public Transform pointContainer;
 
     private Vector3 _staticStartPoint;
+
     // Path parameters
     public int pathResolution;
     public Quaternion projectorAngle;
@@ -27,21 +28,31 @@ public class SplineManager : MonoBehaviour
     public float ringSpeed;
 
     private int numPoints;
-    
+
     // Move point stuff
     public float moveDuration;
 
     private List<bool> _checkpointsHit = new List<bool>();
-    
+
     private List<Vector2> _controlPoints = new List<Vector2>();
     private List<Vector2> _splinePoints = new List<Vector2>();
     private List<bool> _coroutinePermission = new List<bool>();
+    private bool doUpdate;
 
     private void Start()
     {
+        CreatePoints();
 
+        BuildSpline();
+        BuildCheckpoints();
+        doUpdate = true;
+
+    }
+
+    public void CreatePoints()
+    {
         _staticStartPoint = startingPoint.position;
-        
+
         // Add start point
         _controlPoints.Add(MathC.FlipYZ(startingPoint.position));
 
@@ -56,9 +67,10 @@ public class SplineManager : MonoBehaviour
 
         // Add ending point
         _controlPoints.Add(MathC.FlipYZ(endingPoint.position));
+    }
 
-        BuildSpline();
-
+    public void BuildCheckpoints()
+    {
         foreach (Vector2 point in _splinePoints)
         {
             // Debug.Log(point);
@@ -68,23 +80,65 @@ public class SplineManager : MonoBehaviour
         }
         numPoints = _splinePoints.Count;
     }
-    
-    // Update is called once per frame
-    void Update()
+
+// Update is called once per frame
+    private void Update()
     {
-        for (int i = 0; i < _splinePoints.Count; i++)
+        if (doUpdate)
         {
-            if (_coroutinePermission[i])
+            for (int i = 0; i < _splinePoints.Count; i++)
             {
-                StartCoroutine(MoveAlongPath(pointContainer.GetChild(i), i));
+                if (_coroutinePermission[i])
+                {
+                    Debug.Log(pointContainer.GetChild(i));
+                    StartCoroutine(MoveAlongPath(pointContainer.GetChild(i), i));
+                }
+                
             }
+            ManageCheckpoints();
             
         }
-        ManageCheckpoints();
+    }
+    
+    public void RemoveAllChildren(Transform obj)
+    {
+        for (int i = obj.childCount-1; i >= 0; i--)
+        {
+            Transform child = obj.GetChild(i);
+            Destroy(child.gameObject);
+            child.SetParent(null);
+        }
+
     }
 
+    public void ResetPath()
+    {
+        doUpdate = false;
+        StopAllCoroutines();
+        
+        RemoveAllChildren(pointContainer);
+        RemoveAllChildren(columnContainer);
+        
+        _splinePoints.Clear();
+        _checkpointsHit.Clear();
+        _controlPoints.Clear();
+        _coroutinePermission.Clear();
+    }
 
-    private void BuildSpline()
+    public void CreateNewPath()
+    {
+        doUpdate = false;
+        
+        CreatePoints();
+        BuildSpline();
+        BuildCheckpoints();
+        RotatePoints();
+        doUpdate = true;
+    }
+    
+
+
+    public void BuildSpline()
     {
         float distance = Find2DDistance(startingPoint.position, transform.GetChild(0).position);
 
@@ -143,13 +197,12 @@ public class SplineManager : MonoBehaviour
 
     private IEnumerator MoveAlongPath(Transform arrow, int startIndex)
     {
+
         _coroutinePermission[startIndex] = false;
         Vector2 pos;
         float _timeElapsed;
         Vector2 vDiff;
-
-        
-        for (int i = startIndex; i < _splinePoints.Count-1; i++)
+        for (int i = startIndex; i < _splinePoints.Count - 1; i++)
         {
             // Lerp between 2 points
             _timeElapsed = 0;
@@ -160,6 +213,7 @@ public class SplineManager : MonoBehaviour
                 _timeElapsed += Time.deltaTime;
                 yield return null;
             }
+
             pos = _splinePoints[i + 1];
             arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
             vDiff = MathC.FlipYZ(pointContainer.GetChild((startIndex + 1) % _splinePoints.Count).position) -
@@ -169,12 +223,12 @@ public class SplineManager : MonoBehaviour
 
         pos = _splinePoints[0];
         arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
-        
-        for (int i = 0; i < startIndex-1; i++)
+
+        for (int i = 0; i < startIndex - 1; i++)
         {
             // Lerp between 2 points
             _timeElapsed = 0;
-            
+
             while (_timeElapsed < moveDuration)
             {
                 // Move position
@@ -182,15 +236,18 @@ public class SplineManager : MonoBehaviour
                 arrow.position = new Vector3(pos.x, projectorHeight, pos.y);
                 _timeElapsed += Time.deltaTime;
                 yield return null;
-                
+
                 // Turn towards one before
                 vDiff = MathC.FlipYZ(pointContainer.GetChild((startIndex + 1) % _splinePoints.Count).position) -
                         MathC.FlipYZ(arrow.position);
                 arrow.rotation = Quaternion.Euler(90f, Mathf.Atan2(vDiff.x, vDiff.y) * Mathf.Rad2Deg, 0);
 
             }
+
             pos = _splinePoints[i + 1];
         }
+
         _coroutinePermission[startIndex] = true;
+        
     }
 }

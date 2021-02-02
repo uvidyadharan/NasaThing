@@ -8,24 +8,45 @@ public class LineRenderDisplay : MonoBehaviour
     public Transform dest;
 
     public Transform checkpointParent;
-        
+
+    public SplineManager splineManager;
     public string AgentType;
     public Vector3[] checkpointsDist;
     public Vector3[] checkpointsFlat;
+
     public CreateObject ObjectCreator;
-    // public setMaterial ProjSetter;
-    public LineRenderer lr;
+
     public Terrain theTerrain;
     public float moveDown;
+    public string optimization;
+
     public RenderTexture rt;
+
     // Start is called before the first frame update
     void Awake()
     {
         //Debug.Log(theTerrain.terrainData.bounds);
-        showPath(AgentType);
-
-
+        optimization = AgentType;
+        showPath(optimization);
     }
+
+    public void TogglePathOptimization()
+    {   
+        splineManager.ResetPath();
+        splineManager.RemoveAllChildren(splineManager.transform);
+        if (optimization == "flat")
+        {
+            optimization = "dist";
+        }
+        else
+        {
+            optimization = "flat";
+        }
+        showPath(optimization);
+        splineManager.CreateNewPath();
+    }
+
+
     public void showPath(string optim)
     {
         int ctr = 1;
@@ -34,9 +55,9 @@ public class LineRenderDisplay : MonoBehaviour
             case "flat":
                 // ProjSetter.setProjMat(false);
                 Debug.Log("flat checkpoints");
-                lr.positionCount = 11;
-                lr.numCornerVertices = 20;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
+                // lr.positionCount = 11;
+                // lr.numCornerVertices = 20;
+                // lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsFlat)
                 {
@@ -47,7 +68,7 @@ public class LineRenderDisplay : MonoBehaviour
                      float y = finalLoc.y - -1731707;
                      float z = finalLoc.z;
                      float height;
-                     lr.SetPosition(ctr, trailLoc);
+                     // lr.SetPosition(ctr, trailLoc);
                      if (x < 0f && y < 0f && z < 0f)
                      {
                          height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
@@ -79,9 +100,9 @@ public class LineRenderDisplay : MonoBehaviour
             case "dist":
                 // ProjSetter.setProjMat(true);
                 Debug.Log("dist checkpoints");
-                lr.positionCount = 11;
+                // lr.positionCount = 11;
                 //lr.numCornerVertices = 5;
-                lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
+                // lr.SetPosition(0, new Vector3(-7770.566f, 6088.1f-moveDown, 11000.91f));
                 ctr = 1;
                 foreach (Vector3 loc in checkpointsDist)
                 {
@@ -92,7 +113,7 @@ public class LineRenderDisplay : MonoBehaviour
                     float y = finalLoc.y - -1731707;
                     float z = finalLoc.z;
                     float height;
-                    lr.SetPosition(ctr, trailLoc);
+                    // lr.SetPosition(ctr, trailLoc);
                     if (x < 0f && y < 0f && z < 0f)
                     {
                         height = Mathf.Pow(x * x + y * y + z * z, .5f) + 1737400;
