@@ -25,7 +25,7 @@ public class Speedometer : MonoBehaviour
 
     void Start()
     {
-        roverObject = GameObject.Find("MoonRover");
+        roverObject = GameObject.Find("RoverNew");
         roverAttributes = roverObject.GetComponent<RoverControl>();
     }
 

@@ -185,7 +185,7 @@ MonoBehaviour:
     m_Value: 0
     min: 0
   includeSunInBaking:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   m_SkyVersion: 1
   m_ObsoleteEarthPreset:
@@ -202,34 +202,34 @@ MonoBehaviour:
     m_Value: 13494
   planetaryRadius:
     m_OverrideState: 1
-    m_Value: 1737.1
+    m_Value: 100
     min: 0
   planetCenterPosition:
     m_OverrideState: 1
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 0, y: -20000, z: 0}
   airDensityR:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.04534
     min: 0
     max: 1
   airDensityG:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.10237241
     min: 0
     max: 1
   airDensityB:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.23264056
     min: 0
     max: 1
   airTint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0.9, g: 0.9, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
   airMaximumAltitude:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 55261.973
     min: 0
   aerosolDensity:
@@ -267,11 +267,11 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 0}
   groundEmissionTexture:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 0}
   groundEmissionMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 10
     min: 0
   planetRotation:
     m_OverrideState: 1
@@ -281,7 +281,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   spaceEmissionMultiplier:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 10
     min: 0
   spaceRotation:
     m_OverrideState: 1

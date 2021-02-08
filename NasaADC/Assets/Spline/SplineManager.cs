@@ -90,7 +90,7 @@ public class SplineManager : MonoBehaviour
             {
                 if (_coroutinePermission[i])
                 {
-                    Debug.Log(pointContainer.GetChild(i));
+                    // Debug.Log(pointContainer.GetChild(i));
                     StartCoroutine(MoveAlongPath(pointContainer.GetChild(i), i));
                 }
                 

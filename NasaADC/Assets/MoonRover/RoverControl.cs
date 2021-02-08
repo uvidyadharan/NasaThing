@@ -77,7 +77,6 @@ public class RoverControl : MonoBehaviour {
         controls.Player.Steer.performed += str => turnPower = (str.ReadValue<float>());
         controls.Player.ParkingBrake.performed += pbrk => ParkingBrake();
         controls.Player.Light.performed += light => HeadlightToggle();
-        rb.centerOfMass = roverCenterOfMass;
         maxSpeed *= 3.6f;
         headlights = true;
         headlightL.intensity = 10;
@@ -124,8 +123,14 @@ public class RoverControl : MonoBehaviour {
 
     // Update is called once per frame
 
+    private void OnDrawGizmos()
+    {
+        // Gizmos.DrawSphere(rb.worldCenterOfMass, 1.0f);
+    }
+
     private void FixedUpdate() {
 
+        rb.centerOfMass = roverCenterOfMass;
         Move();
         Turn();
         AnimateWheels();
@@ -203,12 +208,15 @@ public class RoverControl : MonoBehaviour {
 
     private void AnimateWheels() {
 
-        foreach (var wheel in wheels) {
+        foreach (var wheel in wheels)
+        {
             Quaternion _rot;
             Vector3 _pos;
             wheel.collider.GetWorldPose(out _pos, out _rot);
-            wheel.model.transform.rotation = _rot;
-            wheel.model.transform.position = _pos + wheelColliderOffset;
+            // Debug.Log(_rot);
+            // Debug.Log(_pos);
+            wheel.model.transform.SetPositionAndRotation(_pos, _rot);
         }
+
     }
 }
