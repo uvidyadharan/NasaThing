@@ -947,6 +947,301 @@ public class @DefaultControl : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""FreeCam"",
+            ""id"": ""76bc9347-5762-476f-b3e3-85461607ad30"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""2e88de01-db1c-43aa-a3bb-1079dc1bebba"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pan"",
+                    ""type"": ""Value"",
+                    ""id"": ""7a1d91e2-d607-4b13-bf61-02de1986a28f"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Height"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e92a4723-fc7a-41dc-bbf5-2aeffb558b2e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AddSpeed"",
+                    ""type"": ""Value"",
+                    ""id"": ""21cfe494-d1d7-4c32-9ac6-762c72df2981"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PanSpeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""632d48b8-cf62-44d6-ad8b-77d1a673489d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""VPan"",
+                    ""type"": ""Value"",
+                    ""id"": ""80b69d42-3ac8-47b8-950f-13e432fee509"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Free"",
+                    ""type"": ""Button"",
+                    ""id"": ""baaa1220-cd1d-4d01-ad1c-c194c07bd917"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f8a0c861-b5bb-4d09-a7f0-536ec6adcad8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a03c6bb1-6c4f-44e9-a9f7-8482b5c255ba"",
+                    ""path"": ""<Keyboard>/numpad8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ba9f0ed3-a6f7-46df-a5ce-ba77e95d48f1"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""529a0221-fd01-4032-a6b1-5f44a9d801d4"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9c125a91-5215-4fe1-85bc-268b799a9f9b"",
+                    ""path"": ""<Keyboard>/numpad6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""b059262d-1f7e-4f45-9d14-0a5002d14a95"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pan"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""065262e9-43bd-4175-9bfd-35cbbc8bd85a"",
+                    ""path"": ""<Keyboard>/numpad7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pan"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a206cd2b-0e34-40ab-a6e9-bce8ce2f6d45"",
+                    ""path"": ""<Keyboard>/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pan"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""b59a3189-e29d-4747-b561-487d9e6b79e1"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e73efbd7-40f6-4d3f-8d55-4cd156f178f3"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""f13aa721-97b1-465d-8575-cfd0d4f824bb"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Height"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""721dd268-2f48-4e30-a81a-48e5b98b737f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddSpeed"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e11327cf-ce72-47d5-82e1-0821f36360e9"",
+                    ""path"": ""<Keyboard>/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1d3e3444-d860-49a2-b32f-4561c167f000"",
+                    ""path"": ""<Keyboard>/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AddSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""031be4fd-d4ba-4435-a419-c8444e08d80f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PanSpeed"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c9896bc4-1e3e-48f1-a116-a435742c15bb"",
+                    ""path"": ""<Keyboard>/end"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PanSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""185a8ee8-2456-4443-8d8c-51b60f63c8b8"",
+                    ""path"": ""<Keyboard>/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PanSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6c7297b1-74af-4b8b-88d7-9d5bb7e4a05b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VPan"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5acbda6f-620b-4c53-9c89-f8b4e2c9e56a"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VPan"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""623b0b51-8596-476d-9583-9c5fd1539e58"",
+                    ""path"": ""<Keyboard>/numpadMinus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VPan"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04850d3b-1b6a-4c7d-8a1f-c63006143ce8"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Free"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1040,6 +1335,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         m_UI_MapPanX = m_UI.FindAction("MapPanX", throwIfNotFound: true);
         m_UI_MapShow = m_UI.FindAction("MapShow", throwIfNotFound: true);
         m_UI_UIHide = m_UI.FindAction("UIHide", throwIfNotFound: true);
+        // FreeCam
+        m_FreeCam = asset.FindActionMap("FreeCam", throwIfNotFound: true);
+        m_FreeCam_Move = m_FreeCam.FindAction("Move", throwIfNotFound: true);
+        m_FreeCam_Pan = m_FreeCam.FindAction("Pan", throwIfNotFound: true);
+        m_FreeCam_Height = m_FreeCam.FindAction("Height", throwIfNotFound: true);
+        m_FreeCam_AddSpeed = m_FreeCam.FindAction("AddSpeed", throwIfNotFound: true);
+        m_FreeCam_PanSpeed = m_FreeCam.FindAction("PanSpeed", throwIfNotFound: true);
+        m_FreeCam_VPan = m_FreeCam.FindAction("VPan", throwIfNotFound: true);
+        m_FreeCam_Free = m_FreeCam.FindAction("Free", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1327,6 +1631,87 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // FreeCam
+    private readonly InputActionMap m_FreeCam;
+    private IFreeCamActions m_FreeCamActionsCallbackInterface;
+    private readonly InputAction m_FreeCam_Move;
+    private readonly InputAction m_FreeCam_Pan;
+    private readonly InputAction m_FreeCam_Height;
+    private readonly InputAction m_FreeCam_AddSpeed;
+    private readonly InputAction m_FreeCam_PanSpeed;
+    private readonly InputAction m_FreeCam_VPan;
+    private readonly InputAction m_FreeCam_Free;
+    public struct FreeCamActions
+    {
+        private @DefaultControl m_Wrapper;
+        public FreeCamActions(@DefaultControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_FreeCam_Move;
+        public InputAction @Pan => m_Wrapper.m_FreeCam_Pan;
+        public InputAction @Height => m_Wrapper.m_FreeCam_Height;
+        public InputAction @AddSpeed => m_Wrapper.m_FreeCam_AddSpeed;
+        public InputAction @PanSpeed => m_Wrapper.m_FreeCam_PanSpeed;
+        public InputAction @VPan => m_Wrapper.m_FreeCam_VPan;
+        public InputAction @Free => m_Wrapper.m_FreeCam_Free;
+        public InputActionMap Get() { return m_Wrapper.m_FreeCam; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FreeCamActions set) { return set.Get(); }
+        public void SetCallbacks(IFreeCamActions instance)
+        {
+            if (m_Wrapper.m_FreeCamActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnMove;
+                @Pan.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPan;
+                @Pan.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPan;
+                @Pan.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPan;
+                @Height.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnHeight;
+                @Height.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnHeight;
+                @Height.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnHeight;
+                @AddSpeed.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnAddSpeed;
+                @AddSpeed.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnAddSpeed;
+                @AddSpeed.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnAddSpeed;
+                @PanSpeed.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPanSpeed;
+                @PanSpeed.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPanSpeed;
+                @PanSpeed.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnPanSpeed;
+                @VPan.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnVPan;
+                @VPan.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnVPan;
+                @VPan.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnVPan;
+                @Free.started -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnFree;
+                @Free.performed -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnFree;
+                @Free.canceled -= m_Wrapper.m_FreeCamActionsCallbackInterface.OnFree;
+            }
+            m_Wrapper.m_FreeCamActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Pan.started += instance.OnPan;
+                @Pan.performed += instance.OnPan;
+                @Pan.canceled += instance.OnPan;
+                @Height.started += instance.OnHeight;
+                @Height.performed += instance.OnHeight;
+                @Height.canceled += instance.OnHeight;
+                @AddSpeed.started += instance.OnAddSpeed;
+                @AddSpeed.performed += instance.OnAddSpeed;
+                @AddSpeed.canceled += instance.OnAddSpeed;
+                @PanSpeed.started += instance.OnPanSpeed;
+                @PanSpeed.performed += instance.OnPanSpeed;
+                @PanSpeed.canceled += instance.OnPanSpeed;
+                @VPan.started += instance.OnVPan;
+                @VPan.performed += instance.OnVPan;
+                @VPan.canceled += instance.OnVPan;
+                @Free.started += instance.OnFree;
+                @Free.performed += instance.OnFree;
+                @Free.canceled += instance.OnFree;
+            }
+        }
+    }
+    public FreeCamActions @FreeCam => new FreeCamActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1401,5 +1786,15 @@ public class @DefaultControl : IInputActionCollection, IDisposable
         void OnMapPanX(InputAction.CallbackContext context);
         void OnMapShow(InputAction.CallbackContext context);
         void OnUIHide(InputAction.CallbackContext context);
+    }
+    public interface IFreeCamActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnPan(InputAction.CallbackContext context);
+        void OnHeight(InputAction.CallbackContext context);
+        void OnAddSpeed(InputAction.CallbackContext context);
+        void OnPanSpeed(InputAction.CallbackContext context);
+        void OnVPan(InputAction.CallbackContext context);
+        void OnFree(InputAction.CallbackContext context);
     }
 }
