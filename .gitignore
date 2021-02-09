@@ -12,6 +12,7 @@ NasaADC/[Bb]uild/
 NasaADC/[Bb]uilds/
 NasaADC/[Ll]ogs/
 NasaADC/[Uu]ser[Ss]ettings/
+NasaADC/Assets/HeatmapImages/slope.png
 NasaADC-withPathfinding1-6/[Ll]ibrary/
 NasaADC-withPathfinding1-6/[Tt]emp/
 NasaADC-withPathfinding1-6/[Oo]bj/
@@ -83,3 +84,7 @@ bin/
 lunar_surface_solid.obj
 
 NasaADC/CosmicSnowmanNasaADC
+
+.gitignore~
+
+*.un~
