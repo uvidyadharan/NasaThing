@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
-
-    public void GoBack()
-    {
-        SceneManager.LoadScene(0);
-    }
-
+public class MainMenu : MonoBehaviour
+{ 
     public void OptionsPage()
     {
         SceneManager.LoadScene(1);
@@ -29,5 +24,4 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(4);
     }
-
 }
